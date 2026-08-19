@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Environment variables / API keys
+.env
+*.env
+
+# Input videos
+data/videos/
+
+# Generated frames
+data/frames/
+
+# Extracted audio
+data/audio/
+
+# Generated transcripts
+data/transcripts/
+
+# Generated visual analysis
+data/visual_analysis/
+
+# ML models
+models/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
