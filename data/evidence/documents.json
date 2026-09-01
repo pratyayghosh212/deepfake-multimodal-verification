@@ -1,0 +1,91 @@
+[
+    {
+        "id": "speech_0000",
+        "text": "Speech from 0.0 to 7.0 seconds. Language: es. Transcript: Colés, vamos a por todo.",
+        "metadata": {
+            "evidence_id": "speech_0000",
+            "type": "speech",
+            "start": 0.0,
+            "end": 7.0,
+            "source": "whisper_transcription",
+            "language": "es"
+        }
+    },
+    {
+        "id": "visual_0000",
+        "text": "Visual evidence at 0.0 seconds. No face was detected in the frame.",
+        "metadata": {
+            "evidence_id": "visual_0000",
+            "type": "visual",
+            "timestamp": 0.0,
+            "frame": "frame_00000.jpg",
+            "source": "mediapipe_face_detection"
+        }
+    },
+    {
+        "id": "visual_0001",
+        "text": "Visual evidence at 1.0 seconds. No face was detected in the frame.",
+        "metadata": {
+            "evidence_id": "visual_0001",
+            "type": "visual",
+            "timestamp": 1.0,
+            "frame": "frame_00001.jpg",
+            "source": "mediapipe_face_detection"
+        }
+    },
+    {
+        "id": "visual_0002",
+        "text": "Visual evidence at 2.0 seconds. 1 face(s) detected. Face 1: confidence 0.7198, bounding box x=0, y=0, width=354, height=354.",
+        "metadata": {
+            "evidence_id": "visual_0002",
+            "type": "visual",
+            "timestamp": 2.0,
+            "frame": "frame_00002.jpg",
+            "source": "mediapipe_face_detection"
+        }
+    },
+    {
+        "id": "visual_0003",
+        "text": "Visual evidence at 3.0 seconds. 1 face(s) detected. Face 1: confidence 0.9594, bounding box x=56, y=69, width=241, height=241.",
+        "metadata": {
+            "evidence_id": "visual_0003",
+            "type": "visual",
+            "timestamp": 3.0,
+            "frame": "frame_00003.jpg",
+            "source": "mediapipe_face_detection"
+        }
+    },
+    {
+        "id": "visual_0004",
+        "text": "Visual evidence at 4.0 seconds. 1 face(s) detected. Face 1: confidence 0.9621, bounding box x=138, y=179, width=184, height=184.",
+        "metadata": {
+            "evidence_id": "visual_0004",
+            "type": "visual",
+            "timestamp": 4.0,
+            "frame": "frame_00004.jpg",
+            "source": "mediapipe_face_detection"
+        }
+    },
+    {
+        "id": "visual_0005",
+        "text": "Visual evidence at 5.0 seconds. 1 face(s) detected. Face 1: confidence 0.9693, bounding box x=148, y=196, width=158, height=158.",
+        "metadata": {
+            "evidence_id": "visual_0005",
+            "type": "visual",
+            "timestamp": 5.0,
+            "frame": "frame_00005.jpg",
+            "source": "mediapipe_face_detection"
+        }
+    },
+    {
+        "id": "visual_0006",
+        "text": "Visual evidence at 6.0 seconds. 1 face(s) detected. Face 1: confidence 0.9305, bounding box x=149, y=187, width=170, height=170.",
+        "metadata": {
+            "evidence_id": "visual_0006",
+            "type": "visual",
+            "timestamp": 6.0,
+            "frame": "frame_00006.jpg",
+            "source": "mediapipe_face_detection"
+        }
+    }
+]

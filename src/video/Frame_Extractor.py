@@ -6,14 +6,19 @@ from pathlib import Path
 def extract_frames(
     video_path: str,
     output_dir: str,
-    interval: float = 1.0
+    interval: float = 0.2
 ):
     """
-    Extract one frame every `interval` seconds.
+    Extract frames every `interval` seconds.
+
+    Default:
+        interval = 0.2 seconds
+        => 5 FPS
 
     Returns metadata containing:
     - frame filename
-    - timestamp
+    - frame ID
+    - actual timestamp
     """
 
     video_path = Path(video_path)
@@ -22,7 +27,7 @@ def extract_frames(
     # Create output directory if it doesn't exist
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Open the video
+    # Open video
     cap = cv2.VideoCapture(str(video_path))
 
     if not cap.isOpened():
@@ -39,9 +44,11 @@ def extract_frames(
     # Calculate duration
     duration = total_frames / fps
 
-    print(f"FPS: {fps}")
+    print(f"Original FPS: {fps}")
     print(f"Total frames: {total_frames}")
     print(f"Duration: {duration:.2f} seconds")
+    print(f"Extraction interval: {interval}s")
+    print(f"Target FPS: {1 / interval:.2f}")
 
     metadata = []
 
@@ -51,7 +58,7 @@ def extract_frames(
     # Extract frames
     while current_time < duration:
 
-        # Move to the required timestamp
+        # Move to requested timestamp
         cap.set(
             cv2.CAP_PROP_POS_MSEC,
             current_time * 1000
@@ -62,23 +69,36 @@ def extract_frames(
         if not success:
             break
 
+        # Get the actual timestamp of the frame OpenCV returned
+        actual_timestamp = cap.get(
+            cv2.CAP_PROP_POS_MSEC
+        ) / 1000.0
+
         # Create filename
         filename = f"frame_{frame_number:05d}.jpg"
         output_path = output_dir / filename
 
         # Save frame
-        cv2.imwrite(str(output_path), frame)
+        success_write = cv2.imwrite(
+            str(output_path),
+            frame
+        )
+
+        if not success_write:
+            print(f"Warning: Could not save {filename}")
+            current_time += interval
+            continue
 
         # Store metadata
         metadata.append({
             "frame_id": frame_number,
             "filename": filename,
-            "timestamp": round(current_time, 3)
+            "timestamp": round(actual_timestamp, 3)
         })
 
         print(
             f"Saved {filename} "
-            f"at {current_time:.2f}s"
+            f"at {actual_timestamp:.3f}s"
         )
 
         frame_number += 1
@@ -90,8 +110,16 @@ def extract_frames(
     # Save metadata
     metadata_path = output_dir / "frames.json"
 
-    with open(metadata_path, "w", encoding="utf-8") as f:
-        json.dump(metadata, f, indent=4)
+    with open(
+        metadata_path,
+        "w",
+        encoding="utf-8"
+    ) as f:
+        json.dump(
+            metadata,
+            f,
+            indent=4
+        )
 
     print(f"\nSaved {len(metadata)} frames.")
     print(f"Metadata: {metadata_path}")
@@ -102,5 +130,5 @@ if __name__ == "__main__":
     extract_frames(
         video_path="data/videos/test.mp4",
         output_dir="data/frames",
-        interval=1.0
+        interval=0.2
     )

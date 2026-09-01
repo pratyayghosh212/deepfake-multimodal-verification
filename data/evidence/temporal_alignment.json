@@ -1,0 +1,1465 @@
+[
+    {
+        "id": "alignment_0000",
+        "timestamp": 0.0,
+        "frame": "frame_00000.jpg",
+        "visual": {
+            "face_count": 0,
+            "temporal": {
+                "mean_deformation": 0.0,
+                "std_deformation": 0.0,
+                "max_deformation": 0.0
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.708166,
+                "fake_probability": 0.291834
+            }
+        },
+        "audio": [
+            {
+                "start": 0.0,
+                "end": 0.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0001",
+        "timestamp": 0.2,
+        "frame": "frame_00001.jpg",
+        "visual": {
+            "face_count": 0,
+            "temporal": {
+                "mean_deformation": 0.0,
+                "std_deformation": 0.0,
+                "max_deformation": 0.0
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.786749,
+                "fake_probability": 0.213251
+            }
+        },
+        "audio": [
+            {
+                "start": 0.0,
+                "end": 0.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 0.2,
+                "end": 0.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0002",
+        "timestamp": 0.4,
+        "frame": "frame_00002.jpg",
+        "visual": {
+            "face_count": 0,
+            "temporal": {
+                "mean_deformation": 0.0,
+                "std_deformation": 0.0,
+                "max_deformation": 0.0
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.760941,
+                "fake_probability": 0.239059
+            }
+        },
+        "audio": [
+            {
+                "start": 0.2,
+                "end": 0.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 0.4,
+                "end": 0.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0003",
+        "timestamp": 0.6,
+        "frame": "frame_00003.jpg",
+        "visual": {
+            "face_count": 0,
+            "temporal": {
+                "mean_deformation": 0.0,
+                "std_deformation": 0.0,
+                "max_deformation": 0.0
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.754612,
+                "fake_probability": 0.245388
+            }
+        },
+        "audio": [
+            {
+                "start": 0.4,
+                "end": 0.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 0.6,
+                "end": 0.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0004",
+        "timestamp": 0.8,
+        "frame": "frame_00004.jpg",
+        "visual": {
+            "face_count": 0,
+            "temporal": {
+                "mean_deformation": 0.0,
+                "std_deformation": 0.0,
+                "max_deformation": 0.0
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.732599,
+                "fake_probability": 0.267401
+            }
+        },
+        "audio": [
+            {
+                "start": 0.6,
+                "end": 0.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 0.8,
+                "end": 1.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0005",
+        "timestamp": 1.0,
+        "frame": "frame_00005.jpg",
+        "visual": {
+            "face_count": 0,
+            "temporal": {
+                "mean_deformation": 0.0,
+                "std_deformation": 0.0,
+                "max_deformation": 0.0
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.740812,
+                "fake_probability": 0.259188
+            }
+        },
+        "audio": [
+            {
+                "start": 0.8,
+                "end": 1.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 1.0,
+                "end": 1.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0006",
+        "timestamp": 1.2,
+        "frame": "frame_00006.jpg",
+        "visual": {
+            "face_count": 0,
+            "temporal": {
+                "mean_deformation": 0.0,
+                "std_deformation": 0.0,
+                "max_deformation": 0.0
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.715356,
+                "fake_probability": 0.284644
+            }
+        },
+        "audio": [
+            {
+                "start": 1.0,
+                "end": 1.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 1.2,
+                "end": 1.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0007",
+        "timestamp": 1.4,
+        "frame": "frame_00007.jpg",
+        "visual": {
+            "face_count": 0,
+            "temporal": {
+                "mean_deformation": 0.0,
+                "std_deformation": 0.0,
+                "max_deformation": 0.0
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.632505,
+                "fake_probability": 0.367495
+            }
+        },
+        "audio": [
+            {
+                "start": 1.2,
+                "end": 1.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 1.4,
+                "end": 1.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0008",
+        "timestamp": 1.6,
+        "frame": "frame_00008.jpg",
+        "visual": {
+            "face_count": 0,
+            "temporal": {
+                "mean_deformation": 0.0,
+                "std_deformation": 0.0,
+                "max_deformation": 0.0
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.659083,
+                "fake_probability": 0.340917
+            }
+        },
+        "audio": [
+            {
+                "start": 1.4,
+                "end": 1.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 1.6,
+                "end": 1.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0009",
+        "timestamp": 1.8,
+        "frame": "frame_00009.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.0,
+                "std_deformation": 0.0,
+                "max_deformation": 0.0
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.630486,
+                "fake_probability": 0.369514
+            }
+        },
+        "audio": [
+            {
+                "start": 1.6,
+                "end": 1.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 1.8,
+                "end": 2.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0010",
+        "timestamp": 2.0,
+        "frame": "frame_00010.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.060216,
+                "std_deformation": 0.031076,
+                "max_deformation": 0.181802
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.629813,
+                "fake_probability": 0.370187
+            }
+        },
+        "audio": [
+            {
+                "start": 1.8,
+                "end": 2.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 2.0,
+                "end": 2.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0011",
+        "timestamp": 2.2,
+        "frame": "frame_00011.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.051073,
+                "std_deformation": 0.023861,
+                "max_deformation": 0.116311
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.669792,
+                "fake_probability": 0.330208
+            }
+        },
+        "audio": [
+            {
+                "start": 2.0,
+                "end": 2.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 2.2,
+                "end": 2.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0012",
+        "timestamp": 2.4,
+        "frame": "frame_00012.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.157456,
+                "std_deformation": 0.076828,
+                "max_deformation": 0.474059
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.634399,
+                "fake_probability": 0.365601
+            }
+        },
+        "audio": [
+            {
+                "start": 2.2,
+                "end": 2.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 2.4,
+                "end": 2.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0013",
+        "timestamp": 2.6,
+        "frame": "frame_00013.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.068431,
+                "std_deformation": 0.033014,
+                "max_deformation": 0.193033
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.629086,
+                "fake_probability": 0.370914
+            }
+        },
+        "audio": [
+            {
+                "start": 2.4,
+                "end": 2.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 2.6,
+                "end": 2.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0014",
+        "timestamp": 2.8,
+        "frame": "frame_00014.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.085926,
+                "std_deformation": 0.040656,
+                "max_deformation": 0.2348
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.713549,
+                "fake_probability": 0.286451
+            }
+        },
+        "audio": [
+            {
+                "start": 2.6,
+                "end": 2.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 2.8,
+                "end": 3.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0015",
+        "timestamp": 3.0,
+        "frame": "frame_00015.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.099508,
+                "std_deformation": 0.053497,
+                "max_deformation": 0.265176
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.67851,
+                "fake_probability": 0.32149
+            }
+        },
+        "audio": [
+            {
+                "start": 2.8,
+                "end": 3.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 3.0,
+                "end": 3.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0016",
+        "timestamp": 3.2,
+        "frame": "frame_00016.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.054612,
+                "std_deformation": 0.028558,
+                "max_deformation": 0.140261
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.672918,
+                "fake_probability": 0.327082
+            }
+        },
+        "audio": [
+            {
+                "start": 3.0,
+                "end": 3.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 3.2,
+                "end": 3.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0017",
+        "timestamp": 3.4,
+        "frame": "frame_00017.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.03335,
+                "std_deformation": 0.015129,
+                "max_deformation": 0.085555
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.665456,
+                "fake_probability": 0.334544
+            }
+        },
+        "audio": [
+            {
+                "start": 3.2,
+                "end": 3.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 3.4,
+                "end": 3.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0018",
+        "timestamp": 3.6,
+        "frame": "frame_00018.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.032326,
+                "std_deformation": 0.015761,
+                "max_deformation": 0.08017
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.650184,
+                "fake_probability": 0.349816
+            }
+        },
+        "audio": [
+            {
+                "start": 3.4,
+                "end": 3.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 3.6,
+                "end": 3.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0019",
+        "timestamp": 3.8,
+        "frame": "frame_00019.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.01669,
+                "std_deformation": 0.009067,
+                "max_deformation": 0.043162
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.678561,
+                "fake_probability": 0.321439
+            }
+        },
+        "audio": [
+            {
+                "start": 3.6,
+                "end": 3.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 3.8,
+                "end": 4.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0020",
+        "timestamp": 4.0,
+        "frame": "frame_00020.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.014493,
+                "std_deformation": 0.004914,
+                "max_deformation": 0.028109
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.684791,
+                "fake_probability": 0.315209
+            }
+        },
+        "audio": [
+            {
+                "start": 3.8,
+                "end": 4.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 4.0,
+                "end": 4.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0021",
+        "timestamp": 4.2,
+        "frame": "frame_00021.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.013123,
+                "std_deformation": 0.00616,
+                "max_deformation": 0.034412
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.700709,
+                "fake_probability": 0.299291
+            }
+        },
+        "audio": [
+            {
+                "start": 4.0,
+                "end": 4.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 4.2,
+                "end": 4.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0022",
+        "timestamp": 4.4,
+        "frame": "frame_00022.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.036834,
+                "std_deformation": 0.022109,
+                "max_deformation": 0.093975
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.713651,
+                "fake_probability": 0.286349
+            }
+        },
+        "audio": [
+            {
+                "start": 4.2,
+                "end": 4.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 4.4,
+                "end": 4.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0023",
+        "timestamp": 4.6,
+        "frame": "frame_00023.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.023958,
+                "std_deformation": 0.012086,
+                "max_deformation": 0.061892
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.680129,
+                "fake_probability": 0.319871
+            }
+        },
+        "audio": [
+            {
+                "start": 4.4,
+                "end": 4.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 4.6,
+                "end": 4.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0024",
+        "timestamp": 4.8,
+        "frame": "frame_00024.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.029626,
+                "std_deformation": 0.014638,
+                "max_deformation": 0.078872
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.671857,
+                "fake_probability": 0.328143
+            }
+        },
+        "audio": [
+            {
+                "start": 4.6,
+                "end": 4.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 4.8,
+                "end": 5.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0025",
+        "timestamp": 5.0,
+        "frame": "frame_00025.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.01317,
+                "std_deformation": 0.006792,
+                "max_deformation": 0.03412
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.664308,
+                "fake_probability": 0.335692
+            }
+        },
+        "audio": [
+            {
+                "start": 4.8,
+                "end": 5.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 5.0,
+                "end": 5.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0026",
+        "timestamp": 5.2,
+        "frame": "frame_00026.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.015249,
+                "std_deformation": 0.008028,
+                "max_deformation": 0.033992
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.692429,
+                "fake_probability": 0.307571
+            }
+        },
+        "audio": [
+            {
+                "start": 5.0,
+                "end": 5.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 5.2,
+                "end": 5.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0027",
+        "timestamp": 5.4,
+        "frame": "frame_00027.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.066897,
+                "std_deformation": 0.032008,
+                "max_deformation": 0.146831
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.634122,
+                "fake_probability": 0.365878
+            }
+        },
+        "audio": [
+            {
+                "start": 5.2,
+                "end": 5.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 5.4,
+                "end": 5.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0028",
+        "timestamp": 5.6,
+        "frame": "frame_00028.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.084682,
+                "std_deformation": 0.044692,
+                "max_deformation": 0.21028
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.691152,
+                "fake_probability": 0.308848
+            }
+        },
+        "audio": [
+            {
+                "start": 5.4,
+                "end": 5.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 5.6,
+                "end": 5.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0029",
+        "timestamp": 5.8,
+        "frame": "frame_00029.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.01899,
+                "std_deformation": 0.006641,
+                "max_deformation": 0.045625
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.698108,
+                "fake_probability": 0.301892
+            }
+        },
+        "audio": [
+            {
+                "start": 5.6,
+                "end": 5.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 5.8,
+                "end": 6.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0030",
+        "timestamp": 6.0,
+        "frame": "frame_00030.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.019192,
+                "std_deformation": 0.010476,
+                "max_deformation": 0.046027
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.686549,
+                "fake_probability": 0.313451
+            }
+        },
+        "audio": [
+            {
+                "start": 5.8,
+                "end": 6.0,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 6.0,
+                "end": 6.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0031",
+        "timestamp": 6.2,
+        "frame": "frame_00031.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.023779,
+                "std_deformation": 0.012979,
+                "max_deformation": 0.057728
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.692905,
+                "fake_probability": 0.307095
+            }
+        },
+        "audio": [
+            {
+                "start": 6.0,
+                "end": 6.2,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 6.2,
+                "end": 6.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0032",
+        "timestamp": 6.4,
+        "frame": "frame_00032.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.016789,
+                "std_deformation": 0.010574,
+                "max_deformation": 0.061634
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.666931,
+                "fake_probability": 0.333069
+            }
+        },
+        "audio": [
+            {
+                "start": 6.2,
+                "end": 6.4,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 6.4,
+                "end": 6.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0033",
+        "timestamp": 6.6,
+        "frame": "frame_00033.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.014539,
+                "std_deformation": 0.010128,
+                "max_deformation": 0.051575
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.673633,
+                "fake_probability": 0.326367
+            }
+        },
+        "audio": [
+            {
+                "start": 6.4,
+                "end": 6.6,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 6.6,
+                "end": 6.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    },
+    {
+        "id": "alignment_0034",
+        "timestamp": 6.8,
+        "frame": "frame_00034.jpg",
+        "visual": {
+            "face_count": 1,
+            "temporal": {
+                "mean_deformation": 0.005644,
+                "std_deformation": 0.00286,
+                "max_deformation": 0.018934
+            },
+            "deepfake_model": {
+                "predicted_label": "real",
+                "real_probability": 0.678292,
+                "fake_probability": 0.321708
+            }
+        },
+        "audio": [
+            {
+                "start": 6.6,
+                "end": 6.8,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            },
+            {
+                "start": 6.8,
+                "end": 6.997,
+                "rms": 0.0,
+                "zcr": 0.0,
+                "spectral_centroid": 0.0
+            }
+        ],
+        "speech": [
+            {
+                "segment_id": 0,
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo."
+            }
+        ]
+    }
+]

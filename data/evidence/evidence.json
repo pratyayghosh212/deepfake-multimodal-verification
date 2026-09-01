@@ -1,0 +1,1340 @@
+[
+    {
+        "id": "speech_0000",
+        "type": "speech",
+        "start": 0.0,
+        "end": 7.0,
+        "text": "Colés, vamos a por todo.",
+        "source": "whisper_transcription",
+        "language": "es",
+        "language_probability": 0.466
+    },
+    {
+        "id": "visual_0000",
+        "type": "visual",
+        "timestamp": 0.0,
+        "frame": "frame_00000.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 0,
+        "faces": [],
+        "temporal": {
+            "mean_deformation": 0.0,
+            "std_deformation": 0.0,
+            "max_deformation": 0.0
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.708166,
+            "fake_probability": 0.291834
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0001",
+        "type": "visual",
+        "timestamp": 0.2,
+        "frame": "frame_00001.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 0,
+        "faces": [],
+        "temporal": {
+            "mean_deformation": 0.0,
+            "std_deformation": 0.0,
+            "max_deformation": 0.0
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.786749,
+            "fake_probability": 0.213251
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0002",
+        "type": "visual",
+        "timestamp": 0.4,
+        "frame": "frame_00002.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 0,
+        "faces": [],
+        "temporal": {
+            "mean_deformation": 0.0,
+            "std_deformation": 0.0,
+            "max_deformation": 0.0
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.760941,
+            "fake_probability": 0.239059
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0003",
+        "type": "visual",
+        "timestamp": 0.6,
+        "frame": "frame_00003.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 0,
+        "faces": [],
+        "temporal": {
+            "mean_deformation": 0.0,
+            "std_deformation": 0.0,
+            "max_deformation": 0.0
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.754612,
+            "fake_probability": 0.245388
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0004",
+        "type": "visual",
+        "timestamp": 0.8,
+        "frame": "frame_00004.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 0,
+        "faces": [],
+        "temporal": {
+            "mean_deformation": 0.0,
+            "std_deformation": 0.0,
+            "max_deformation": 0.0
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.732599,
+            "fake_probability": 0.267401
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0005",
+        "type": "visual",
+        "timestamp": 1.0,
+        "frame": "frame_00005.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 0,
+        "faces": [],
+        "temporal": {
+            "mean_deformation": 0.0,
+            "std_deformation": 0.0,
+            "max_deformation": 0.0
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.740812,
+            "fake_probability": 0.259188
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0006",
+        "type": "visual",
+        "timestamp": 1.2,
+        "frame": "frame_00006.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 0,
+        "faces": [],
+        "temporal": {
+            "mean_deformation": 0.0,
+            "std_deformation": 0.0,
+            "max_deformation": 0.0
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.715356,
+            "fake_probability": 0.284644
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0007",
+        "type": "visual",
+        "timestamp": 1.4,
+        "frame": "frame_00007.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 0,
+        "faces": [],
+        "temporal": {
+            "mean_deformation": 0.0,
+            "std_deformation": 0.0,
+            "max_deformation": 0.0
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.632505,
+            "fake_probability": 0.367495
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0008",
+        "type": "visual",
+        "timestamp": 1.6,
+        "frame": "frame_00008.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 0,
+        "faces": [],
+        "temporal": {
+            "mean_deformation": 0.0,
+            "std_deformation": 0.0,
+            "max_deformation": 0.0
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.659083,
+            "fake_probability": 0.340917
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0009",
+        "type": "visual",
+        "timestamp": 1.8,
+        "frame": "frame_00009.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 0,
+                "y": 0,
+                "width": 385,
+                "height": 385,
+                "confidence": 0.5395
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.0,
+            "std_deformation": 0.0,
+            "max_deformation": 0.0
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.630486,
+            "fake_probability": 0.369514
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0010",
+        "type": "visual",
+        "timestamp": 2.0,
+        "frame": "frame_00010.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 0,
+                "y": 0,
+                "width": 354,
+                "height": 354,
+                "confidence": 0.7198
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.060216,
+            "std_deformation": 0.031076,
+            "max_deformation": 0.181802
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.629813,
+            "fake_probability": 0.370187
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0011",
+        "type": "visual",
+        "timestamp": 2.2,
+        "frame": "frame_00011.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 0,
+                "y": 0,
+                "width": 355,
+                "height": 355,
+                "confidence": 0.796
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.051073,
+            "std_deformation": 0.023861,
+            "max_deformation": 0.116311
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.669792,
+            "fake_probability": 0.330208
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0012",
+        "type": "visual",
+        "timestamp": 2.4,
+        "frame": "frame_00012.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 0,
+                "y": 0,
+                "width": 357,
+                "height": 357,
+                "confidence": 0.8358
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.157456,
+            "std_deformation": 0.076828,
+            "max_deformation": 0.474059
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.634399,
+            "fake_probability": 0.365601
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0013",
+        "type": "visual",
+        "timestamp": 2.6,
+        "frame": "frame_00013.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 4,
+                "y": 0,
+                "width": 315,
+                "height": 315,
+                "confidence": 0.9386
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.068431,
+            "std_deformation": 0.033014,
+            "max_deformation": 0.193033
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.629086,
+            "fake_probability": 0.370914
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0014",
+        "type": "visual",
+        "timestamp": 2.8,
+        "frame": "frame_00014.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 28,
+                "y": 24,
+                "width": 278,
+                "height": 278,
+                "confidence": 0.9206
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.085926,
+            "std_deformation": 0.040656,
+            "max_deformation": 0.2348
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.713549,
+            "fake_probability": 0.286451
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0015",
+        "type": "visual",
+        "timestamp": 3.0,
+        "frame": "frame_00015.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 56,
+                "y": 69,
+                "width": 241,
+                "height": 241,
+                "confidence": 0.9594
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.099508,
+            "std_deformation": 0.053497,
+            "max_deformation": 0.265176
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.67851,
+            "fake_probability": 0.32149
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0016",
+        "type": "visual",
+        "timestamp": 3.2,
+        "frame": "frame_00016.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 82,
+                "y": 99,
+                "width": 217,
+                "height": 217,
+                "confidence": 0.9289
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.054612,
+            "std_deformation": 0.028558,
+            "max_deformation": 0.140261
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.672918,
+            "fake_probability": 0.327082
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0017",
+        "type": "visual",
+        "timestamp": 3.4,
+        "frame": "frame_00017.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 102,
+                "y": 119,
+                "width": 216,
+                "height": 216,
+                "confidence": 0.9494
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.03335,
+            "std_deformation": 0.015129,
+            "max_deformation": 0.085555
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.665456,
+            "fake_probability": 0.334544
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0018",
+        "type": "visual",
+        "timestamp": 3.6,
+        "frame": "frame_00018.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 108,
+                "y": 150,
+                "width": 207,
+                "height": 207,
+                "confidence": 0.9392
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.032326,
+            "std_deformation": 0.015761,
+            "max_deformation": 0.08017
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.650184,
+            "fake_probability": 0.349816
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0019",
+        "type": "visual",
+        "timestamp": 3.8,
+        "frame": "frame_00019.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 128,
+                "y": 168,
+                "width": 192,
+                "height": 192,
+                "confidence": 0.9629
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.01669,
+            "std_deformation": 0.009067,
+            "max_deformation": 0.043162
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.678561,
+            "fake_probability": 0.321439
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0020",
+        "type": "visual",
+        "timestamp": 4.0,
+        "frame": "frame_00020.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 138,
+                "y": 179,
+                "width": 184,
+                "height": 184,
+                "confidence": 0.9621
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.014493,
+            "std_deformation": 0.004914,
+            "max_deformation": 0.028109
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.684791,
+            "fake_probability": 0.315209
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0021",
+        "type": "visual",
+        "timestamp": 4.2,
+        "frame": "frame_00021.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 139,
+                "y": 186,
+                "width": 180,
+                "height": 180,
+                "confidence": 0.9487
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.013123,
+            "std_deformation": 0.00616,
+            "max_deformation": 0.034412
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.700709,
+            "fake_probability": 0.299291
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0022",
+        "type": "visual",
+        "timestamp": 4.4,
+        "frame": "frame_00022.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 141,
+                "y": 190,
+                "width": 173,
+                "height": 173,
+                "confidence": 0.9555
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.036834,
+            "std_deformation": 0.022109,
+            "max_deformation": 0.093975
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.713651,
+            "fake_probability": 0.286349
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0023",
+        "type": "visual",
+        "timestamp": 4.6,
+        "frame": "frame_00023.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 139,
+                "y": 193,
+                "width": 173,
+                "height": 173,
+                "confidence": 0.9422
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.023958,
+            "std_deformation": 0.012086,
+            "max_deformation": 0.061892
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.680129,
+            "fake_probability": 0.319871
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0024",
+        "type": "visual",
+        "timestamp": 4.8,
+        "frame": "frame_00024.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 144,
+                "y": 195,
+                "width": 163,
+                "height": 163,
+                "confidence": 0.9679
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.029626,
+            "std_deformation": 0.014638,
+            "max_deformation": 0.078872
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.671857,
+            "fake_probability": 0.328143
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0025",
+        "type": "visual",
+        "timestamp": 5.0,
+        "frame": "frame_00025.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 148,
+                "y": 196,
+                "width": 158,
+                "height": 158,
+                "confidence": 0.9693
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.01317,
+            "std_deformation": 0.006792,
+            "max_deformation": 0.03412
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.664308,
+            "fake_probability": 0.335692
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0026",
+        "type": "visual",
+        "timestamp": 5.2,
+        "frame": "frame_00026.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 148,
+                "y": 190,
+                "width": 166,
+                "height": 166,
+                "confidence": 0.9584
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.015249,
+            "std_deformation": 0.008028,
+            "max_deformation": 0.033992
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.692429,
+            "fake_probability": 0.307571
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0027",
+        "type": "visual",
+        "timestamp": 5.4,
+        "frame": "frame_00027.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 152,
+                "y": 192,
+                "width": 160,
+                "height": 160,
+                "confidence": 0.9504
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.066897,
+            "std_deformation": 0.032008,
+            "max_deformation": 0.146831
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.634122,
+            "fake_probability": 0.365878
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0028",
+        "type": "visual",
+        "timestamp": 5.6,
+        "frame": "frame_00028.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 150,
+                "y": 190,
+                "width": 167,
+                "height": 167,
+                "confidence": 0.9494
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.084682,
+            "std_deformation": 0.044692,
+            "max_deformation": 0.21028
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.691152,
+            "fake_probability": 0.308848
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0029",
+        "type": "visual",
+        "timestamp": 5.8,
+        "frame": "frame_00029.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 153,
+                "y": 191,
+                "width": 165,
+                "height": 165,
+                "confidence": 0.9468
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.01899,
+            "std_deformation": 0.006641,
+            "max_deformation": 0.045625
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.698108,
+            "fake_probability": 0.301892
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0030",
+        "type": "visual",
+        "timestamp": 6.0,
+        "frame": "frame_00030.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 149,
+                "y": 187,
+                "width": 170,
+                "height": 170,
+                "confidence": 0.9305
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.019192,
+            "std_deformation": 0.010476,
+            "max_deformation": 0.046027
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.686549,
+            "fake_probability": 0.313451
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0031",
+        "type": "visual",
+        "timestamp": 6.2,
+        "frame": "frame_00031.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 151,
+                "y": 191,
+                "width": 167,
+                "height": 167,
+                "confidence": 0.9457
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.023779,
+            "std_deformation": 0.012979,
+            "max_deformation": 0.057728
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.692905,
+            "fake_probability": 0.307095
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0032",
+        "type": "visual",
+        "timestamp": 6.4,
+        "frame": "frame_00032.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 151,
+                "y": 190,
+                "width": 167,
+                "height": 167,
+                "confidence": 0.9427
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.016789,
+            "std_deformation": 0.010574,
+            "max_deformation": 0.061634
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.666931,
+            "fake_probability": 0.333069
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0033",
+        "type": "visual",
+        "timestamp": 6.6,
+        "frame": "frame_00033.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 149,
+                "y": 189,
+                "width": 166,
+                "height": 166,
+                "confidence": 0.9497
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.014539,
+            "std_deformation": 0.010128,
+            "max_deformation": 0.051575
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.673633,
+            "fake_probability": 0.326367
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    },
+    {
+        "id": "visual_0034",
+        "type": "visual",
+        "timestamp": 6.8,
+        "frame": "frame_00034.jpg",
+        "source": [
+            "mediapipe_face_detection",
+            "normalized_landmark_analysis",
+            "vit_deepfake_detector"
+        ],
+        "face_count": 1,
+        "faces": [
+            {
+                "x": 149,
+                "y": 188,
+                "width": 167,
+                "height": 167,
+                "confidence": 0.9476
+            }
+        ],
+        "temporal": {
+            "mean_deformation": 0.005644,
+            "std_deformation": 0.00286,
+            "max_deformation": 0.018934
+        },
+        "deepfake_model": {
+            "predicted_label": "real",
+            "real_probability": 0.678292,
+            "fake_probability": 0.321708
+        },
+        "aligned_speech": [
+            {
+                "id": "speech_0000",
+                "start": 0.0,
+                "end": 7.0,
+                "text": "Colés, vamos a por todo.",
+                "language": "es"
+            }
+        ]
+    }
+]

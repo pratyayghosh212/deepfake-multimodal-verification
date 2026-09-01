@@ -1,0 +1,854 @@
+{
+    "system": {
+        "name": "Multimodal Deepfake Evidence Fusion",
+        "version": "1.0"
+    },
+    "overall": {
+        "overall_score": 0.433477,
+        "maximum_frame_score": 0.540257,
+        "average_frame_score": 0.387714,
+        "assessment": "moderate_suspicion"
+    },
+    "frames": [
+        {
+            "timestamp": 0.0,
+            "frame": "frame_00000.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.291834
+                },
+                "temporal": {
+                    "mean_deformation": 0.0,
+                    "anomaly_score": 0.0
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.345917,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 0.2,
+            "frame": "frame_00001.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.213251
+                },
+                "temporal": {
+                    "mean_deformation": 0.0,
+                    "anomaly_score": 0.0
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.306625,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 0.4,
+            "frame": "frame_00002.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.239059
+                },
+                "temporal": {
+                    "mean_deformation": 0.0,
+                    "anomaly_score": 0.0
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.31953,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 0.6,
+            "frame": "frame_00003.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.245388
+                },
+                "temporal": {
+                    "mean_deformation": 0.0,
+                    "anomaly_score": 0.0
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.322694,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 0.8,
+            "frame": "frame_00004.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.267401
+                },
+                "temporal": {
+                    "mean_deformation": 0.0,
+                    "anomaly_score": 0.0
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.333701,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 1.0,
+            "frame": "frame_00005.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.259188
+                },
+                "temporal": {
+                    "mean_deformation": 0.0,
+                    "anomaly_score": 0.0
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.329594,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 1.2,
+            "frame": "frame_00006.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.284644
+                },
+                "temporal": {
+                    "mean_deformation": 0.0,
+                    "anomaly_score": 0.0
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.342322,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 1.4,
+            "frame": "frame_00007.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.367495
+                },
+                "temporal": {
+                    "mean_deformation": 0.0,
+                    "anomaly_score": 0.0
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.383748,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 1.6,
+            "frame": "frame_00008.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.340917
+                },
+                "temporal": {
+                    "mean_deformation": 0.0,
+                    "anomaly_score": 0.0
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.370459,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 1.8,
+            "frame": "frame_00009.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.369514
+                },
+                "temporal": {
+                    "mean_deformation": 0.0,
+                    "anomaly_score": 0.0
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.384757,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 2.0,
+            "frame": "frame_00010.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.370187
+                },
+                "temporal": {
+                    "mean_deformation": 0.060216,
+                    "anomaly_score": 0.30108
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.44531,
+                "evidence_level": "medium"
+            }
+        },
+        {
+            "timestamp": 2.2,
+            "frame": "frame_00011.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.330208
+                },
+                "temporal": {
+                    "mean_deformation": 0.051073,
+                    "anomaly_score": 0.255365
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.416177,
+                "evidence_level": "medium"
+            }
+        },
+        {
+            "timestamp": 2.4,
+            "frame": "frame_00012.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.365601
+                },
+                "temporal": {
+                    "mean_deformation": 0.157456,
+                    "anomaly_score": 0.78728
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.540257,
+                "evidence_level": "medium"
+            }
+        },
+        {
+            "timestamp": 2.6,
+            "frame": "frame_00013.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.370914
+                },
+                "temporal": {
+                    "mean_deformation": 0.068431,
+                    "anomaly_score": 0.342155
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.453888,
+                "evidence_level": "medium"
+            }
+        },
+        {
+            "timestamp": 2.8,
+            "frame": "frame_00014.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.286451
+                },
+                "temporal": {
+                    "mean_deformation": 0.085926,
+                    "anomaly_score": 0.42963
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.429152,
+                "evidence_level": "medium"
+            }
+        },
+        {
+            "timestamp": 3.0,
+            "frame": "frame_00015.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.32149
+                },
+                "temporal": {
+                    "mean_deformation": 0.099508,
+                    "anomaly_score": 0.49754
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.460253,
+                "evidence_level": "medium"
+            }
+        },
+        {
+            "timestamp": 3.2,
+            "frame": "frame_00016.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.327082
+                },
+                "temporal": {
+                    "mean_deformation": 0.054612,
+                    "anomaly_score": 0.27306
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.418153,
+                "evidence_level": "medium"
+            }
+        },
+        {
+            "timestamp": 3.4,
+            "frame": "frame_00017.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.334544
+                },
+                "temporal": {
+                    "mean_deformation": 0.03335,
+                    "anomaly_score": 0.16675
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.400622,
+                "evidence_level": "medium"
+            }
+        },
+        {
+            "timestamp": 3.6,
+            "frame": "frame_00018.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.349816
+                },
+                "temporal": {
+                    "mean_deformation": 0.032326,
+                    "anomaly_score": 0.16163
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.407234,
+                "evidence_level": "medium"
+            }
+        },
+        {
+            "timestamp": 3.8,
+            "frame": "frame_00019.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.321439
+                },
+                "temporal": {
+                    "mean_deformation": 0.01669,
+                    "anomaly_score": 0.08345
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.37741,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 4.0,
+            "frame": "frame_00020.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.315209
+                },
+                "temporal": {
+                    "mean_deformation": 0.014493,
+                    "anomaly_score": 0.072465
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.372098,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 4.2,
+            "frame": "frame_00021.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.299291
+                },
+                "temporal": {
+                    "mean_deformation": 0.013123,
+                    "anomaly_score": 0.065615
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.362768,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 4.4,
+            "frame": "frame_00022.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.286349
+                },
+                "temporal": {
+                    "mean_deformation": 0.036834,
+                    "anomaly_score": 0.18417
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.380009,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 4.6,
+            "frame": "frame_00023.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.319871
+                },
+                "temporal": {
+                    "mean_deformation": 0.023958,
+                    "anomaly_score": 0.11979
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.383893,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 4.8,
+            "frame": "frame_00024.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.328143
+                },
+                "temporal": {
+                    "mean_deformation": 0.029626,
+                    "anomaly_score": 0.14813
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.393698,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 5.0,
+            "frame": "frame_00025.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.335692
+                },
+                "temporal": {
+                    "mean_deformation": 0.01317,
+                    "anomaly_score": 0.06585
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.381016,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 5.2,
+            "frame": "frame_00026.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.307571
+                },
+                "temporal": {
+                    "mean_deformation": 0.015249,
+                    "anomaly_score": 0.076245
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.369034,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 5.4,
+            "frame": "frame_00027.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.365878
+                },
+                "temporal": {
+                    "mean_deformation": 0.066897,
+                    "anomaly_score": 0.334485
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.449836,
+                "evidence_level": "medium"
+            }
+        },
+        {
+            "timestamp": 5.6,
+            "frame": "frame_00028.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.308848
+                },
+                "temporal": {
+                    "mean_deformation": 0.084682,
+                    "anomaly_score": 0.42341
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.439106,
+                "evidence_level": "medium"
+            }
+        },
+        {
+            "timestamp": 5.8,
+            "frame": "frame_00029.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.301892
+                },
+                "temporal": {
+                    "mean_deformation": 0.01899,
+                    "anomaly_score": 0.09495
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.369936,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 6.0,
+            "frame": "frame_00030.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.313451
+                },
+                "temporal": {
+                    "mean_deformation": 0.019192,
+                    "anomaly_score": 0.09596
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.375918,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 6.2,
+            "frame": "frame_00031.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.307095
+                },
+                "temporal": {
+                    "mean_deformation": 0.023779,
+                    "anomaly_score": 0.118895
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.377327,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 6.4,
+            "frame": "frame_00032.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.333069
+                },
+                "temporal": {
+                    "mean_deformation": 0.016789,
+                    "anomaly_score": 0.083945
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.383324,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 6.6,
+            "frame": "frame_00033.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.326367
+                },
+                "temporal": {
+                    "mean_deformation": 0.014539,
+                    "anomaly_score": 0.072695
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.377723,
+                "evidence_level": "low"
+            }
+        },
+        {
+            "timestamp": 6.8,
+            "frame": "frame_00034.jpg",
+            "signals": {
+                "visual": {
+                    "fake_probability": 0.321708
+                },
+                "temporal": {
+                    "mean_deformation": 0.005644,
+                    "anomaly_score": 0.02822
+                },
+                "audio": {
+                    "anomaly_score": 0.0
+                },
+                "lip_sync": {
+                    "synchronization_ratio": 0.0,
+                    "anomaly_score": 1.0
+                }
+            },
+            "fusion": {
+                "score": 0.366498,
+                "evidence_level": "low"
+            }
+        }
+    ]
+}
