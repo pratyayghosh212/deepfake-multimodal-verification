@@ -9,6 +9,10 @@ env/
 .env
 *.env
 
+
+data/ 
+
+
 # Input videos
 data/videos/
 
@@ -23,6 +27,10 @@ data/transcripts/
 
 # Generated visual analysis
 data/visual_analysis/
+
+ data/chroma/
+ data/evidence/chunks.json
+gi data/evidence/embeddings.json
 
 # ML models
 models/
