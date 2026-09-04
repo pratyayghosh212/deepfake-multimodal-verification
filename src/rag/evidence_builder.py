@@ -33,6 +33,7 @@ def build_speech_evidence(transcript):
     for segment in transcript["segments"]:
 
         evidence_item = {
+
             "id": (
                 f"speech_"
                 f"{segment['segment_id']:04d}"
@@ -47,9 +48,7 @@ def build_speech_evidence(transcript):
 
             "source": "whisper_transcription",
 
-            "language": transcript[
-                "language"
-            ],
+            "language": transcript["language"],
 
             "language_probability": transcript[
                 "language_probability"
@@ -64,7 +63,7 @@ def build_speech_evidence(transcript):
 
 
 # =========================================================
-# Temporal alignment
+# Timestamp alignment
 # =========================================================
 
 def find_speech_at_timestamp(
@@ -72,13 +71,8 @@ def find_speech_at_timestamp(
     speech_evidence
 ):
     """
-    Find speech segments that overlap
-    a particular visual timestamp.
-
-    A speech segment overlaps a visual frame
-    when:
-
-        start <= timestamp <= end
+    Find speech segments overlapping
+    a particular timestamp.
     """
 
     matched_speech = []
@@ -92,14 +86,88 @@ def find_speech_at_timestamp(
         ):
 
             matched_speech.append({
+
                 "id": speech["id"],
+
                 "start": speech["start"],
+
                 "end": speech["end"],
+
                 "text": speech["text"],
+
                 "language": speech["language"]
             })
 
     return matched_speech
+
+
+def find_audio_at_timestamp(
+    timestamp,
+    audio_data
+):
+    """
+    Find the audio analysis window that
+    contains the given visual timestamp.
+    """
+
+    for audio in audio_data:
+
+        start = audio.get("start", 0.0)
+        end = audio.get("end", 0.0)
+
+        if start <= timestamp < end:
+
+            return audio
+
+    return None
+
+
+# =========================================================
+# Audio quality check
+# =========================================================
+
+def evaluate_audio_availability(audio_item):
+    """
+    Determine whether the audio window
+    contains meaningful signal.
+
+    This prevents missing/silent audio from
+    being interpreted as suspicious evidence.
+    """
+
+    if not audio_item:
+        return {
+            "available": False,
+            "reason": "No aligned audio window found."
+        }
+
+    features = audio_item.get(
+        "features",
+        {}
+    )
+
+    rms = features.get(
+        "rms_energy",
+        0.0
+    )
+
+    # Very low RMS generally means silence
+    # or practically unavailable audio.
+
+    if rms < 0.0001:
+
+        return {
+            "available": False,
+            "reason": (
+                "Audio window contains "
+                "almost no measurable signal."
+            )
+        }
+
+    return {
+        "available": True,
+        "reason": "Audio signal available."
+    }
 
 
 # =========================================================
@@ -110,16 +178,19 @@ def build_visual_evidence(
     face_data,
     temporal_data,
     model_data,
-    speech_evidence
+    speech_evidence,
+    audio_data
 ):
     """
-    Combine all currently available visual signals.
+    Combine multimodal evidence.
 
     Sources:
+
         1. MediaPipe face detection
         2. Normalized landmark temporal analysis
-        3. Pretrained ViT deepfake model
-        4. Timestamp-aligned speech
+        3. Pretrained ViT deepfake detector
+        4. Whisper speech transcription
+        5. Librosa acoustic analysis
     """
 
     evidence = []
@@ -129,17 +200,21 @@ def build_visual_evidence(
     # -----------------------------------------------------
 
     temporal_lookup = {
+
         item["filename"]: item
+
         for item in temporal_data
     }
 
     model_lookup = {
+
         item["filename"]: item
+
         for item in model_data
     }
 
     # -----------------------------------------------------
-    # Process every frame
+    # Process frames
     # -----------------------------------------------------
 
     for index, frame in enumerate(
@@ -147,7 +222,9 @@ def build_visual_evidence(
     ):
 
         filename = frame["filename"]
+
         timestamp = frame["timestamp"]
+
         faces = frame["faces"]
 
         # -------------------------------------------------
@@ -160,7 +237,7 @@ def build_visual_evidence(
         )
 
         # -------------------------------------------------
-        # Visual model
+        # Visual deepfake model
         # -------------------------------------------------
 
         model = model_lookup.get(
@@ -169,7 +246,7 @@ def build_visual_evidence(
         )
 
         # -------------------------------------------------
-        # Find speech occurring at this timestamp
+        # Speech alignment
         # -------------------------------------------------
 
         aligned_speech = (
@@ -180,25 +257,129 @@ def build_visual_evidence(
         )
 
         # -------------------------------------------------
-        # Build evidence item
+        # Audio alignment
+        # -------------------------------------------------
+
+        aligned_audio = (
+            find_audio_at_timestamp(
+                timestamp,
+                audio_data
+            )
+        )
+
+        audio_status = (
+            evaluate_audio_availability(
+                aligned_audio
+            )
+        )
+
+        # -------------------------------------------------
+        # Build audio evidence
+        # -------------------------------------------------
+
+        if aligned_audio:
+
+            audio_features = (
+                aligned_audio.get(
+                    "features",
+                    {}
+                )
+            )
+
+            audio_information = {
+
+                "available": audio_status[
+                    "available"
+                ],
+
+                "status": audio_status[
+                    "reason"
+                ],
+
+                "start": aligned_audio.get(
+                    "start"
+                ),
+
+                "end": aligned_audio.get(
+                    "end"
+                ),
+
+                "rms_energy": audio_features.get(
+                    "rms_energy",
+                    0.0
+                ),
+
+                "zero_crossing_rate": (
+                    audio_features.get(
+                        "zero_crossing_rate",
+                        0.0
+                    )
+                ),
+
+                "spectral_centroid": (
+                    audio_features.get(
+                        "spectral_centroid",
+                        0.0
+                    )
+                ),
+
+                "spectral_bandwidth": (
+                    audio_features.get(
+                        "spectral_bandwidth",
+                        0.0
+                    )
+                ),
+
+                "spectral_rolloff": (
+                    audio_features.get(
+                        "spectral_rolloff",
+                        0.0
+                    )
+                ),
+
+                "source": aligned_audio.get(
+                    "source",
+                    "librosa_acoustic_analysis"
+                )
+            }
+
+        else:
+
+            audio_information = {
+
+                "available": False,
+
+                "status": (
+                    "No aligned audio data found."
+                )
+            }
+
+        # -------------------------------------------------
+        # Build unified evidence item
         # -------------------------------------------------
 
         evidence_item = {
+
             "id": (
                 f"visual_"
                 f"{index:04d}"
             ),
 
-            "type": "visual",
+            "type": "multimodal_visual",
 
             "timestamp": timestamp,
 
             "frame": filename,
 
             "source": [
+
                 "mediapipe_face_detection",
+
                 "normalized_landmark_analysis",
-                "vit_deepfake_detector"
+
+                "vit_deepfake_detector",
+
+                "librosa_acoustic_analysis"
             ],
 
             # ---------------------------------------------
@@ -210,48 +391,68 @@ def build_visual_evidence(
             "faces": faces,
 
             # ---------------------------------------------
-            # Temporal information
+            # Temporal facial information
             # ---------------------------------------------
 
             "temporal": {
-                "mean_deformation": temporal.get(
-                    "mean_deformation",
-                    0.0
+
+                "mean_deformation": (
+                    temporal.get(
+                        "mean_deformation",
+                        0.0
+                    )
                 ),
 
-                "std_deformation": temporal.get(
-                    "std_deformation",
-                    0.0
+                "std_deformation": (
+                    temporal.get(
+                        "std_deformation",
+                        0.0
+                    )
                 ),
 
-                "max_deformation": temporal.get(
-                    "max_deformation",
-                    0.0
+                "max_deformation": (
+                    temporal.get(
+                        "max_deformation",
+                        0.0
+                    )
                 )
             },
 
             # ---------------------------------------------
-            # Deepfake model information
+            # Visual deepfake model
             # ---------------------------------------------
 
             "deepfake_model": {
-                "predicted_label": model.get(
-                    "predicted_label"
+
+                "predicted_label": (
+                    model.get(
+                        "predicted_label"
+                    )
                 ),
 
-                "real_probability": model.get(
-                    "real_probability",
-                    0.0
+                "real_probability": (
+                    model.get(
+                        "real_probability",
+                        0.0
+                    )
                 ),
 
-                "fake_probability": model.get(
-                    "fake_probability",
-                    0.0
+                "fake_probability": (
+                    model.get(
+                        "fake_probability",
+                        0.0
+                    )
                 )
             },
 
             # ---------------------------------------------
-            # Temporal multimodal alignment
+            # Audio information
+            # ---------------------------------------------
+
+            "audio": audio_information,
+
+            # ---------------------------------------------
+            # Speech alignment
             # ---------------------------------------------
 
             "aligned_speech": aligned_speech
@@ -303,6 +504,12 @@ def save_evidence(
 
 if __name__ == "__main__":
 
+    print()
+    print("=" * 60)
+    print("MULTIMODAL EVIDENCE BUILDER")
+    print("=" * 60)
+    print()
+
     # -----------------------------------------------------
     # Input files
     # -----------------------------------------------------
@@ -327,6 +534,11 @@ if __name__ == "__main__":
         "visual_model_analysis.json"
     )
 
+    audio_path = (
+        "data/audio/"
+        "audio_analysis.json"
+    )
+
     # -----------------------------------------------------
     # Output
     # -----------------------------------------------------
@@ -337,60 +549,45 @@ if __name__ == "__main__":
     )
 
     # -----------------------------------------------------
-    # Load transcript
+    # Load data
     # -----------------------------------------------------
 
-    print(
-        "Loading transcript..."
-    )
+    print("Loading transcript...")
 
     transcript = load_json(
         transcript_path
     )
 
-    # -----------------------------------------------------
-    # Load face detection
-    # -----------------------------------------------------
-
-    print(
-        "Loading face analysis..."
-    )
+    print("Loading face analysis...")
 
     face_data = load_json(
         faces_path
     )
 
-    # -----------------------------------------------------
-    # Load temporal analysis
-    # -----------------------------------------------------
-
-    print(
-        "Loading temporal analysis..."
-    )
+    print("Loading temporal analysis...")
 
     temporal_data = load_json(
         temporal_path
     )
 
-    # -----------------------------------------------------
-    # Load visual model analysis
-    # -----------------------------------------------------
-
-    print(
-        "Loading visual model analysis..."
-    )
+    print("Loading visual model analysis...")
 
     model_data = load_json(
         model_path
+    )
+
+    print("Loading audio analysis...")
+
+    audio_data = load_json(
+        audio_path
     )
 
     # -----------------------------------------------------
     # Build speech evidence
     # -----------------------------------------------------
 
-    print(
-        "Building speech evidence..."
-    )
+    print()
+    print("Building speech evidence...")
 
     speech_evidence = (
         build_speech_evidence(
@@ -399,19 +596,25 @@ if __name__ == "__main__":
     )
 
     # -----------------------------------------------------
-    # Build visual evidence
+    # Build multimodal visual evidence
     # -----------------------------------------------------
 
     print(
-        "Building visual evidence..."
+        "Building multimodal visual evidence..."
     )
 
     visual_evidence = (
         build_visual_evidence(
+
             face_data,
+
             temporal_data,
+
             model_data,
-            speech_evidence
+
+            speech_evidence,
+
+            audio_data
         )
     )
 
@@ -429,9 +632,12 @@ if __name__ == "__main__":
     # -----------------------------------------------------
 
     unified_evidence.sort(
+
         key=lambda item:
+
         item.get(
             "start",
+
             item.get(
                 "timestamp",
                 0
@@ -453,11 +659,13 @@ if __name__ == "__main__":
     # -----------------------------------------------------
 
     print()
+    print("=" * 60)
+    print("EVIDENCE SUMMARY")
+    print("=" * 60)
 
     print(
-        f"Created "
-        f"{len(unified_evidence)} "
-        f"evidence items."
+        f"Total evidence items: "
+        f"{len(unified_evidence)}"
     )
 
     print(
@@ -466,24 +674,30 @@ if __name__ == "__main__":
     )
 
     print(
-        f"Visual evidence: "
+        f"Multimodal visual evidence: "
         f"{len(visual_evidence)}"
     )
 
-    # Count aligned visual frames
-    aligned_count = sum(
+    audio_available_count = sum(
+
         1
+
         for item in visual_evidence
-        if item["aligned_speech"]
+
+        if item["audio"].get(
+            "available",
+            False
+        )
     )
 
     print(
-        f"Visual frames with "
-        f"aligned speech: "
-        f"{aligned_count}"
+        f"Frames with usable audio: "
+        f"{audio_available_count}"
     )
 
     print(
         f"Saved to: "
         f"{output_path}"
     )
+
+    print("=" * 60)

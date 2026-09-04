@@ -1,4 +1,3 @@
-
 import json
 from pathlib import Path
 
@@ -8,18 +7,23 @@ from pathlib import Path
 # =========================================================
 
 def load_json(file_path):
-    """Load JSON data from a file."""
+    """
+    Load JSON data from a file.
+    """
 
     with open(
         file_path,
         "r",
         encoding="utf-8"
     ) as file:
+
         return json.load(file)
 
 
 def save_json(data, file_path):
-    """Save JSON data to a file."""
+    """
+    Save JSON data to a file.
+    """
 
     file_path = Path(file_path)
 
@@ -43,6 +47,35 @@ def save_json(data, file_path):
 
 
 # =========================================================
+# Safe conversion helpers
+# =========================================================
+
+def safe_float(value, default=0.0):
+    """
+    Safely convert a value to float.
+
+    Handles:
+        None
+        missing values
+        invalid strings
+    """
+
+    if value is None:
+        return default
+
+    try:
+
+        return float(value)
+
+    except (
+        ValueError,
+        TypeError
+    ):
+
+        return default
+
+
+# =========================================================
 # Frame description
 # =========================================================
 
@@ -50,11 +83,41 @@ def frame_to_text(frame):
     """
     Convert one fused frame into a searchable
     natural-language evidence description.
+
+    The generated text is used for:
+
+        - chunking
+        - embeddings
+        - Chroma retrieval
+        - RAG evidence
+
+    IMPORTANT:
+
+    This function preserves both:
+
+        - technical deepfake evidence
+        - semantic evidence such as transcript
+          and face information
+
+    This allows the RAG system to answer both:
+
+        "Is this video suspicious?"
+
+    and:
+
+        "What is the audio transcript?"
+        "What happens in the video?"
     """
 
-    timestamp = frame.get(
-        "timestamp",
-        0.0
+    # =====================================================
+    # Basic frame information
+    # =====================================================
+
+    timestamp = safe_float(
+        frame.get(
+            "timestamp",
+            0.0
+        )
     )
 
     filename = frame.get(
@@ -65,103 +128,220 @@ def frame_to_text(frame):
     signals = frame.get(
         "signals",
         {}
-    )
+    ) or {}
 
     fusion = frame.get(
         "fusion",
         {}
+    ) or {}
+
+    # =====================================================
+    # Face detection information
+    # =====================================================
+
+    face_detection = frame.get(
+        "face_detection",
+        {}
+    ) or {}
+
+    face_count = int(
+        face_detection.get(
+            "face_count",
+            0
+        ) or 0
     )
 
-    # -----------------------------------------------------
+    faces = face_detection.get(
+        "faces",
+        []
+    ) or []
+
+    # =====================================================
+    # Speech / transcript information
+    # =====================================================
+
+    speech = frame.get(
+        "speech",
+        {}
+    ) or {}
+
+    speech_segments = speech.get(
+        "segments",
+        []
+    ) or []
+
+    transcript_parts = []
+
+    for segment in speech_segments:
+
+        if not isinstance(
+            segment,
+            dict
+        ):
+            continue
+
+        # Try common transcript keys
+
+        segment_text = (
+
+            segment.get("text")
+
+            or segment.get("transcript")
+
+            or segment.get("speech")
+
+            or ""
+        )
+
+        if segment_text:
+
+            transcript_parts.append(
+                str(segment_text).strip()
+            )
+
+    transcript_text = " ".join(
+        transcript_parts
+    )
+
+    # =====================================================
     # Visual signal
-    # -----------------------------------------------------
+    # =====================================================
 
     visual = signals.get(
         "visual",
         {}
+    ) or {}
+
+    predicted_label = visual.get(
+        "predicted_label",
+        "unknown"
     )
 
-    fake_probability = visual.get(
-        "fake_probability",
-        0.0
+    fake_probability = safe_float(
+        visual.get(
+            "fake_probability",
+            0.0
+        )
     )
 
-    # -----------------------------------------------------
+    real_probability = safe_float(
+        visual.get(
+            "real_probability",
+            0.0
+        )
+    )
+
+    # =====================================================
     # Temporal signal
-    # -----------------------------------------------------
+    # =====================================================
 
     temporal = signals.get(
         "temporal",
         {}
+    ) or {}
+
+    mean_deformation = safe_float(
+        temporal.get(
+            "mean_deformation",
+            0.0
+        )
     )
 
-    mean_deformation = temporal.get(
-        "mean_deformation",
-        0.0
+    std_deformation = safe_float(
+        temporal.get(
+            "std_deformation",
+            0.0
+        )
     )
 
-    temporal_anomaly = temporal.get(
-        "anomaly_score",
-        0.0
+    max_deformation = safe_float(
+        temporal.get(
+            "max_deformation",
+            0.0
+        )
     )
 
-    # -----------------------------------------------------
+    temporal_anomaly = safe_float(
+        temporal.get(
+            "anomaly_score",
+            0.0
+        )
+    )
+
+    # =====================================================
     # Audio signal
-    # -----------------------------------------------------
+    # =====================================================
 
     audio = signals.get(
         "audio",
         {}
+    ) or {}
+
+    audio_available = bool(
+        audio.get(
+            "available",
+            False
+        )
     )
 
-    audio_anomaly = audio.get(
-        "anomaly_score",
-        0.0
+    rms = safe_float(
+        audio.get(
+            "rms",
+            0.0
+        )
     )
 
-    # Some versions of the fusion output may contain
-    # additional audio features.
-    rms = audio.get(
-        "rms",
-        0.0
+    zcr = safe_float(
+        audio.get(
+            "zero_crossing_rate",
+            0.0
+        )
     )
 
-    zcr = audio.get(
-        "zero_crossing_rate",
-        0.0
+    centroid = safe_float(
+        audio.get(
+            "spectral_centroid",
+            0.0
+        )
     )
 
-    centroid = audio.get(
-        "spectral_centroid",
-        0.0
-    )
-
-    # -----------------------------------------------------
+    # =====================================================
     # Lip-sync signal
-    # -----------------------------------------------------
+    # =====================================================
 
     lip_sync = signals.get(
         "lip_sync",
         {}
+    ) or {}
+
+    lipsync_available = bool(
+        lip_sync.get(
+            "available",
+            False
+        )
     )
 
-    synchronization_ratio = lip_sync.get(
-        "synchronization_ratio",
-        0.0
+    synchronization_ratio = (
+        lip_sync.get(
+            "synchronization_ratio"
+        )
     )
 
-    lipsync_anomaly = lip_sync.get(
-        "anomaly_score",
-        0.0
+    lipsync_anomaly = (
+        lip_sync.get(
+            "anomaly_score"
+        )
     )
 
-    # -----------------------------------------------------
+    # =====================================================
     # Fusion signal
-    # -----------------------------------------------------
+    # =====================================================
 
-    fusion_score = fusion.get(
-        "score",
-        0.0
+    fusion_score = safe_float(
+        fusion.get(
+            "score",
+            0.0
+        )
     )
 
     evidence_level = fusion.get(
@@ -169,37 +349,167 @@ def frame_to_text(frame):
         "unknown"
     )
 
-    # -----------------------------------------------------
-    # Build searchable text
-    # -----------------------------------------------------
+    active_modalities = fusion.get(
+        "active_modalities",
+        []
+    ) or []
+
+    # =====================================================
+    # Face description
+    # =====================================================
+
+    if face_count == 0:
+
+        face_text = (
+            "No face was detected in this frame. "
+        )
+
+    elif face_count == 1:
+
+        face_text = (
+            "One face was detected in this frame. "
+        )
+
+    else:
+
+        face_text = (
+            f"{face_count} faces were detected "
+            f"in this frame. "
+        )
+
+    # =====================================================
+    # Transcript description
+    # =====================================================
+
+    if transcript_text:
+
+        speech_text = (
+            f"The aligned audio transcript at this "
+            f"timestamp is: '{transcript_text}'. "
+        )
+
+    else:
+
+        speech_text = (
+            "No transcript segment was aligned "
+            "with this frame. "
+        )
+
+    # =====================================================
+    # Audio description
+    # =====================================================
+
+    if audio_available:
+
+        audio_text = (
+            f"Usable audio was available. "
+            f"Audio analysis reported RMS "
+            f"{rms:.4f}, "
+            f"zero-crossing rate "
+            f"{zcr:.4f}, "
+            f"and spectral centroid "
+            f"{centroid:.2f} Hz. "
+        )
+
+    else:
+
+        audio_text = (
+            "No reliable audio evidence was "
+            "available for this timestamp. "
+        )
+
+    # =====================================================
+    # Lip-sync description
+    # =====================================================
+
+    if (
+        lipsync_available
+        and synchronization_ratio is not None
+    ):
+
+        synchronization_ratio = safe_float(
+            synchronization_ratio
+        )
+
+        lipsync_text = (
+            f"Lip-sync synchronization ratio was "
+            f"{synchronization_ratio:.4f}. "
+        )
+
+        if lipsync_anomaly is not None:
+
+            lipsync_anomaly = safe_float(
+                lipsync_anomaly
+            )
+
+            lipsync_text += (
+                f"Lip-sync anomaly score was "
+                f"{lipsync_anomaly:.4f}. "
+            )
+
+    else:
+
+        lipsync_text = (
+            "No reliable lip-sync measurement was "
+            "available for this timestamp. "
+        )
+
+    # =====================================================
+    # Active modalities
+    # =====================================================
+
+    if active_modalities:
+
+        modalities_text = ", ".join(
+            active_modalities
+        )
+
+    else:
+
+        modalities_text = "unknown"
+
+    # =====================================================
+    # Build searchable evidence text
+    # =====================================================
 
     text = (
-        f"At {timestamp:.2f} seconds, "
-        f"frame {filename} contains multimodal deepfake evidence. "
 
-        f"The visual deepfake detector reported a "
-        f"fake probability of {fake_probability:.4f}. "
+        f"VIDEO FRAME EVIDENCE. "
 
-        f"Facial temporal analysis reported a mean deformation "
-        f"of {mean_deformation:.4f} and temporal anomaly score "
-        f"of {temporal_anomaly:.4f}. "
+        f"Timestamp: {timestamp:.2f} seconds. "
 
-        f"Audio analysis reported RMS {rms:.4f}, "
-        f"zero-crossing rate {zcr:.4f}, "
-        f"spectral centroid {centroid:.2f} Hz, "
-        f"and audio anomaly score {audio_anomaly:.4f}. "
+        f"Frame: {filename}. "
 
-        f"Lip-sync analysis reported a synchronization ratio "
-        f"of {synchronization_ratio:.4f} and lip-sync anomaly "
-        f"score of {lipsync_anomaly:.4f}. "
+        f"{face_text}"
+
+        f"{speech_text}"
+
+        f"The visual deepfake detector predicted "
+        f"'{predicted_label}' with fake probability "
+        f"{fake_probability:.4f} and real probability "
+        f"{real_probability:.4f}. "
+
+        f"Facial temporal analysis reported mean "
+        f"deformation {mean_deformation:.4f}, "
+        f"standard deviation {std_deformation:.4f}, "
+        f"maximum deformation {max_deformation:.4f}, "
+        f"and temporal anomaly score "
+        f"{temporal_anomaly:.4f}. "
+
+        f"{audio_text}"
+
+        f"{lipsync_text}"
 
         f"The multimodal fusion score was "
         f"{fusion_score:.4f}, "
-        f"with evidence level {evidence_level}."
+        f"with evidence level "
+        f"'{evidence_level}'. "
+
+        f"Active modalities were: "
+        f"{modalities_text}."
     )
 
     return text
-
 
 # =========================================================
 # Temporal chunk creation
@@ -214,63 +524,90 @@ def create_chunks(
 
     Example:
 
-        0.0 - 1.0 seconds
-        1.0 - 2.0 seconds
-        2.0 - 3.0 seconds
+        Chunk 0:
+            0.0 - 1.0 seconds
+
+        Chunk 1:
+            1.0 - 2.0 seconds
+
+        Chunk 2:
+            2.0 - 3.0 seconds
 
     Each chunk contains:
+
         - chunk ID
-        - temporal range
+        - start/end time
         - frame IDs
-        - frame filenames
-        - searchable text
-        - aggregated fusion statistics
+        - number of frames
+        - aggregated statistics
+        - evidence levels
+        - searchable natural-language text
     """
 
     if not frames:
+
         return []
 
-    # -----------------------------------------------------
+    # =====================================================
     # Sort frames chronologically
-    # -----------------------------------------------------
+    # =====================================================
 
     frames = sorted(
+
         frames,
-        key=lambda item: item.get(
-            "timestamp",
-            0.0
+
+        key=lambda item: safe_float(
+            item.get(
+                "timestamp",
+                0.0
+            )
         )
     )
 
     chunks = []
 
-    # -----------------------------------------------------
-    # Determine chunk range
-    # -----------------------------------------------------
+    # =====================================================
+    # Determine total duration
+    # =====================================================
 
     max_timestamp = max(
-        frame.get(
-            "timestamp",
-            0.0
+
+        safe_float(
+            frame.get(
+                "timestamp",
+                0.0
+            )
         )
+
         for frame in frames
     )
 
+    # Frames are extracted approximately every 0.2 seconds.
+    # Add a small interval so the final frame belongs
+    # to a temporal range.
+
     total_duration = (
-        max_timestamp +
-        0.2
+        max_timestamp + 0.2
     )
+
+    # =====================================================
+    # Calculate number of chunks
+    # =====================================================
 
     number_of_chunks = int(
         total_duration // chunk_duration
     )
 
-    if total_duration % chunk_duration != 0:
+    if (
+        total_duration % chunk_duration
+        != 0
+    ):
+
         number_of_chunks += 1
 
-    # -----------------------------------------------------
-    # Create chunks
-    # -----------------------------------------------------
+    # =====================================================
+    # Create temporal chunks
+    # =====================================================
 
     for chunk_index in range(
         number_of_chunks
@@ -287,135 +624,204 @@ def create_chunks(
         )
 
         # -------------------------------------------------
-        # Frames belonging to this time interval
+        # Select frames belonging to this chunk
         # -------------------------------------------------
 
         chunk_frames = [
+
             frame
+
             for frame in frames
+
             if (
-                frame.get(
-                    "timestamp",
-                    0.0
-                ) >= start
+
+                safe_float(
+                    frame.get(
+                        "timestamp",
+                        0.0
+                    )
+                )
+                >= start
+
                 and
-                frame.get(
-                    "timestamp",
-                    0.0
-                ) < end
+
+                safe_float(
+                    frame.get(
+                        "timestamp",
+                        0.0
+                    )
+                )
+                < end
             )
         ]
 
+        # Skip empty intervals.
+
         if not chunk_frames:
+
             continue
 
-        # -------------------------------------------------
+        # =================================================
         # Generate searchable text
-        # -------------------------------------------------
+        # =================================================
 
-        frame_texts = []
+        frame_texts = [
 
-        for frame in chunk_frames:
+            frame_to_text(frame)
 
-            frame_texts.append(
-                frame_to_text(frame)
-            )
+            for frame in chunk_frames
+        ]
 
         combined_text = " ".join(
             frame_texts
         )
 
-        # -------------------------------------------------
+        # =================================================
         # Frame IDs
-        # -------------------------------------------------
+        # =================================================
 
-        frame_ids = []
+        frame_ids = [
 
-        for frame in chunk_frames:
-
-            frame_id = frame.get(
+            frame.get(
                 "frame"
             )
 
-            if frame_id is not None:
-                frame_ids.append(
-                    frame_id
+            for frame in chunk_frames
+
+            if frame.get(
+                "frame"
+            ) is not None
+        ]
+
+        # =================================================
+        # Fusion statistics
+        # =================================================
+
+        fusion_scores = [
+
+            safe_float(
+
+                frame.get(
+                    "fusion",
+                    {}
+                ).get(
+                    "score",
+                    0.0
                 )
-
-        # -------------------------------------------------
-        # Fusion scores
-        # -------------------------------------------------
-
-        fusion_scores = []
-
-        for frame in chunk_frames:
-
-            score = frame.get(
-                "fusion",
-                {}
-            ).get(
-                "score",
-                0.0
             )
 
-            fusion_scores.append(
-                float(score)
-            )
+            for frame in chunk_frames
+        ]
 
         average_score = (
+
             sum(fusion_scores) /
             len(fusion_scores)
+
             if fusion_scores
+
             else 0.0
         )
 
         maximum_score = (
+
             max(fusion_scores)
+
             if fusion_scores
+
             else 0.0
         )
 
-        # -------------------------------------------------
-        # Fake probabilities
-        # -------------------------------------------------
+        # =================================================
+        # Visual fake probability statistics
+        # =================================================
 
-        fake_probabilities = []
+        fake_probabilities = [
 
-        for frame in chunk_frames:
+            safe_float(
 
-            probability = frame.get(
-                "signals",
-                {}
-            ).get(
-                "visual",
-                {}
-            ).get(
-                "fake_probability",
-                0.0
+                frame.get(
+                    "signals",
+                    {}
+                ).get(
+                    "visual",
+                    {}
+                ).get(
+                    "fake_probability",
+                    0.0
+                )
             )
 
-            fake_probabilities.append(
-                float(probability)
-            )
+            for frame in chunk_frames
+        ]
 
         average_fake_probability = (
+
             sum(fake_probabilities) /
             len(fake_probabilities)
+
             if fake_probabilities
+
             else 0.0
         )
 
         maximum_fake_probability = (
+
             max(fake_probabilities)
+
             if fake_probabilities
+
             else 0.0
         )
 
-        # -------------------------------------------------
-        # Evidence level
-        # -------------------------------------------------
+        # =================================================
+        # Temporal anomaly statistics
+        # =================================================
+
+        temporal_anomalies = [
+
+            safe_float(
+
+                frame.get(
+                    "signals",
+                    {}
+                ).get(
+                    "temporal",
+                    {}
+                ).get(
+                    "anomaly_score",
+                    0.0
+                )
+            )
+
+            for frame in chunk_frames
+        ]
+
+        average_temporal_anomaly = (
+
+            sum(temporal_anomalies) /
+            len(temporal_anomalies)
+
+            if temporal_anomalies
+
+            else 0.0
+        )
+
+        maximum_temporal_anomaly = (
+
+            max(temporal_anomalies)
+
+            if temporal_anomalies
+
+            else 0.0
+        )
+
+        # =================================================
+        # Evidence levels
+        # =================================================
 
         evidence_levels = [
+
             frame.get(
                 "fusion",
                 {}
@@ -423,14 +829,43 @@ def create_chunks(
                 "evidence_level",
                 "unknown"
             )
+
             for frame in chunk_frames
         ]
 
-        # -------------------------------------------------
+        # =================================================
+        # Active modalities
+        # =================================================
+
+        active_modalities = set()
+
+        for frame in chunk_frames:
+
+            modalities = frame.get(
+                "fusion",
+                {}
+            ).get(
+                "active_modalities",
+                []
+            )
+
+            if isinstance(
+                modalities,
+                list
+            ):
+
+                for modality in modalities:
+
+                    active_modalities.add(
+                        modality
+                    )
+
+        # =================================================
         # Create chunk
-        # -------------------------------------------------
+        # =================================================
 
         chunk = {
+
             "id": (
                 f"chunk_"
                 f"{chunk_index:04d}"
@@ -455,11 +890,15 @@ def create_chunks(
 
             "frame_ids": frame_ids,
 
+            # Kept for compatibility with
+            # other RAG components.
+
             "frames": frame_ids,
 
             "evidence_ids": frame_ids,
 
             "statistics": {
+
                 "average_fusion_score": round(
                     average_score,
                     6
@@ -478,10 +917,24 @@ def create_chunks(
                 "maximum_fake_probability": round(
                     maximum_fake_probability,
                     6
+                ),
+
+                "average_temporal_anomaly": round(
+                    average_temporal_anomaly,
+                    6
+                ),
+
+                "maximum_temporal_anomaly": round(
+                    maximum_temporal_anomaly,
+                    6
                 )
             },
 
             "evidence_levels": evidence_levels,
+
+            "active_modalities": sorted(
+                active_modalities
+            ),
 
             "text": combined_text
         }
@@ -509,9 +962,19 @@ if __name__ == "__main__":
         "chunks.json"
     )
 
-    # -----------------------------------------------------
+    # =====================================================
+    # Header
+    # =====================================================
+
+    print()
+    print("=" * 60)
+    print("MULTIMODAL EVIDENCE CHUNKER")
+    print("=" * 60)
+    print()
+
+    # =====================================================
     # Load fused evidence
-    # -----------------------------------------------------
+    # =====================================================
 
     print(
         "Loading fused evidence..."
@@ -521,19 +984,9 @@ if __name__ == "__main__":
         input_path
     )
 
-    # -----------------------------------------------------
-    # IMPORTANT:
-    #
-    # fused_evidence.json is a dictionary:
-    #
-    # {
-    #     "system": ...,
-    #     "overall": ...,
-    #     "frames": [...]
-    # }
-    #
-    # We need the frames list.
-    # -----------------------------------------------------
+    # =====================================================
+    # Extract frames
+    # =====================================================
 
     if isinstance(
         fused_data,
@@ -551,6 +1004,7 @@ if __name__ == "__main__":
     ):
 
         # Backward compatibility
+
         frames = fused_data
 
     else:
@@ -564,9 +1018,9 @@ if __name__ == "__main__":
         f"{len(frames)}"
     )
 
-    # -----------------------------------------------------
-    # Validate frames
-    # -----------------------------------------------------
+    # =====================================================
+    # Validate
+    # =====================================================
 
     if not frames:
 
@@ -575,9 +1029,13 @@ if __name__ == "__main__":
         )
 
     required_fields = [
+
         "timestamp",
+
         "frame",
+
         "signals",
+
         "fusion"
     ]
 
@@ -585,22 +1043,36 @@ if __name__ == "__main__":
         frames
     ):
 
+        if not isinstance(
+            frame,
+            dict
+        ):
+
+            raise ValueError(
+                f"Frame {index} is not a valid "
+                f"dictionary."
+            )
+
         missing = [
+
             field
+
             for field in required_fields
+
             if field not in frame
         ]
 
         if missing:
 
             raise ValueError(
+
                 f"Frame {index} is missing "
                 f"fields: {missing}"
             )
 
-    # -----------------------------------------------------
+    # =====================================================
     # Create chunks
-    # -----------------------------------------------------
+    # =====================================================
 
     print()
     print(
@@ -608,23 +1080,48 @@ if __name__ == "__main__":
     )
 
     chunks = create_chunks(
+
         frames,
+
         chunk_duration=1.0
     )
 
-    # -----------------------------------------------------
-    # Save
-    # -----------------------------------------------------
+    # =====================================================
+    # Validate chunks
+    # =====================================================
+
+    if not chunks:
+
+        raise ValueError(
+            "No chunks were created."
+        )
+
+    # =====================================================
+    # Save chunks
+    # =====================================================
 
     save_json(
+
         chunks,
+
         output_path
     )
 
-    print()
-    print(
-        "--------------------------------"
+    # =====================================================
+    # Summary
+    # =====================================================
+
+    total_frames = sum(
+
+        chunk[
+            "frame_count"
+        ]
+
+        for chunk in chunks
     )
+
+    print()
+    print("-" * 60)
 
     print(
         "Chunking completed."
@@ -637,7 +1134,12 @@ if __name__ == "__main__":
 
     print(
         f"Frames covered: "
-        f"{sum(chunk['frame_count'] for chunk in chunks)}"
+        f"{total_frames}"
+    )
+
+    print(
+        f"Chunk duration: "
+        f"1.0 second"
     )
 
     print(
@@ -645,7 +1147,4 @@ if __name__ == "__main__":
         f"{output_path}"
     )
 
-    print(
-        "--------------------------------"
-    )
-
+    print("-" * 60)

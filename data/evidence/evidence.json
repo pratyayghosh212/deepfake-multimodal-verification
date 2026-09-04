@@ -11,13 +11,14 @@
     },
     {
         "id": "visual_0000",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 0.0,
         "frame": "frame_00000.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 0,
         "faces": [],
@@ -31,6 +32,18 @@
             "real_probability": 0.708166,
             "fake_probability": 0.291834
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 0.0,
+            "end": 0.2,
+            "rms_energy": 0.002431,
+            "zero_crossing_rate": 0.053292,
+            "spectral_centroid": 1551.607,
+            "spectral_bandwidth": 2048.808,
+            "spectral_rolloff": 4140.625,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -43,13 +56,14 @@
     },
     {
         "id": "visual_0001",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 0.2,
         "frame": "frame_00001.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 0,
         "faces": [],
@@ -63,6 +77,18 @@
             "real_probability": 0.786749,
             "fake_probability": 0.213251
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 0.2,
+            "end": 0.4,
+            "rms_energy": 0.002315,
+            "zero_crossing_rate": 0.097098,
+            "spectral_centroid": 2345.888,
+            "spectral_bandwidth": 2414.525,
+            "spectral_rolloff": 5414.062,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -75,13 +101,14 @@
     },
     {
         "id": "visual_0002",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 0.4,
         "frame": "frame_00002.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 0,
         "faces": [],
@@ -95,6 +122,18 @@
             "real_probability": 0.760941,
             "fake_probability": 0.239059
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 0.4,
+            "end": 0.6,
+            "rms_energy": 0.004189,
+            "zero_crossing_rate": 0.230399,
+            "spectral_centroid": 3489.455,
+            "spectral_bandwidth": 2464.795,
+            "spectral_rolloff": 6179.688,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -107,13 +146,14 @@
     },
     {
         "id": "visual_0003",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 0.6,
         "frame": "frame_00003.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 0,
         "faces": [],
@@ -127,6 +167,18 @@
             "real_probability": 0.754612,
             "fake_probability": 0.245388
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 0.6,
+            "end": 0.8,
+            "rms_energy": 0.005756,
+            "zero_crossing_rate": 0.09375,
+            "spectral_centroid": 2262.205,
+            "spectral_bandwidth": 2256.933,
+            "spectral_rolloff": 5018.973,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -139,13 +191,14 @@
     },
     {
         "id": "visual_0004",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 0.8,
         "frame": "frame_00004.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 0,
         "faces": [],
@@ -159,6 +212,18 @@
             "real_probability": 0.732599,
             "fake_probability": 0.267401
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 0.8,
+            "end": 1.0,
+            "rms_energy": 0.004147,
+            "zero_crossing_rate": 0.115095,
+            "spectral_centroid": 2706.653,
+            "spectral_bandwidth": 2436.435,
+            "spectral_rolloff": 5810.268,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -171,13 +236,14 @@
     },
     {
         "id": "visual_0005",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 1.0,
         "frame": "frame_00005.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 0,
         "faces": [],
@@ -191,6 +257,18 @@
             "real_probability": 0.740812,
             "fake_probability": 0.259188
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 1.0,
+            "end": 1.2,
+            "rms_energy": 0.003735,
+            "zero_crossing_rate": 0.133371,
+            "spectral_centroid": 2683.293,
+            "spectral_bandwidth": 2408.139,
+            "spectral_rolloff": 5593.75,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -203,13 +281,14 @@
     },
     {
         "id": "visual_0006",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 1.2,
         "frame": "frame_00006.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 0,
         "faces": [],
@@ -223,6 +302,18 @@
             "real_probability": 0.715356,
             "fake_probability": 0.284644
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 1.2,
+            "end": 1.4,
+            "rms_energy": 0.002831,
+            "zero_crossing_rate": 0.256557,
+            "spectral_centroid": 3534.306,
+            "spectral_bandwidth": 2498.932,
+            "spectral_rolloff": 6275.67,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -235,13 +326,14 @@
     },
     {
         "id": "visual_0007",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 1.4,
         "frame": "frame_00007.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 0,
         "faces": [],
@@ -255,6 +347,18 @@
             "real_probability": 0.632505,
             "fake_probability": 0.367495
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 1.4,
+            "end": 1.6,
+            "rms_energy": 0.002552,
+            "zero_crossing_rate": 0.076869,
+            "spectral_centroid": 2124.487,
+            "spectral_bandwidth": 2382.537,
+            "spectral_rolloff": 5308.036,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -267,13 +371,14 @@
     },
     {
         "id": "visual_0008",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 1.6,
         "frame": "frame_00008.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 0,
         "faces": [],
@@ -287,6 +392,18 @@
             "real_probability": 0.659083,
             "fake_probability": 0.340917
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 1.6,
+            "end": 1.8,
+            "rms_energy": 0.002823,
+            "zero_crossing_rate": 0.172712,
+            "spectral_centroid": 3115.989,
+            "spectral_bandwidth": 2532.563,
+            "spectral_rolloff": 6125.0,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -299,13 +416,14 @@
     },
     {
         "id": "visual_0009",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 1.8,
         "frame": "frame_00009.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -327,6 +445,18 @@
             "real_probability": 0.630486,
             "fake_probability": 0.369514
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 1.8,
+            "end": 2.0,
+            "rms_energy": 0.003435,
+            "zero_crossing_rate": 0.168039,
+            "spectral_centroid": 3004.194,
+            "spectral_bandwidth": 2531.591,
+            "spectral_rolloff": 5981.027,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -339,13 +469,14 @@
     },
     {
         "id": "visual_0010",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 2.0,
         "frame": "frame_00010.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -367,6 +498,18 @@
             "real_probability": 0.629813,
             "fake_probability": 0.370187
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 2.0,
+            "end": 2.2,
+            "rms_energy": 0.003232,
+            "zero_crossing_rate": 0.17334,
+            "spectral_centroid": 3045.103,
+            "spectral_bandwidth": 2567.279,
+            "spectral_rolloff": 5976.562,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -379,13 +522,14 @@
     },
     {
         "id": "visual_0011",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 2.2,
         "frame": "frame_00011.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -407,6 +551,18 @@
             "real_probability": 0.669792,
             "fake_probability": 0.330208
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 2.2,
+            "end": 2.4,
+            "rms_energy": 0.00283,
+            "zero_crossing_rate": 0.143276,
+            "spectral_centroid": 2638.751,
+            "spectral_bandwidth": 2516.195,
+            "spectral_rolloff": 5765.625,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -419,13 +575,14 @@
     },
     {
         "id": "visual_0012",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 2.4,
         "frame": "frame_00012.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -447,6 +604,18 @@
             "real_probability": 0.634399,
             "fake_probability": 0.365601
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 2.4,
+            "end": 2.6,
+            "rms_energy": 0.00241,
+            "zero_crossing_rate": 0.06808,
+            "spectral_centroid": 2025.379,
+            "spectral_bandwidth": 2304.348,
+            "spectral_rolloff": 5046.875,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -459,13 +628,14 @@
     },
     {
         "id": "visual_0013",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 2.6,
         "frame": "frame_00013.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -487,6 +657,18 @@
             "real_probability": 0.629086,
             "fake_probability": 0.370914
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 2.6,
+            "end": 2.8,
+            "rms_energy": 0.00434,
+            "zero_crossing_rate": 0.074986,
+            "spectral_centroid": 1961.902,
+            "spectral_bandwidth": 2251.613,
+            "spectral_rolloff": 4845.982,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -499,13 +681,14 @@
     },
     {
         "id": "visual_0014",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 2.8,
         "frame": "frame_00014.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -527,6 +710,18 @@
             "real_probability": 0.713549,
             "fake_probability": 0.286451
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 2.8,
+            "end": 3.0,
+            "rms_energy": 0.011552,
+            "zero_crossing_rate": 0.065499,
+            "spectral_centroid": 1509.772,
+            "spectral_bandwidth": 1848.475,
+            "spectral_rolloff": 3396.205,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -539,13 +734,14 @@
     },
     {
         "id": "visual_0015",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 3.0,
         "frame": "frame_00015.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -567,6 +763,18 @@
             "real_probability": 0.67851,
             "fake_probability": 0.32149
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 3.0,
+            "end": 3.2,
+            "rms_energy": 0.00405,
+            "zero_crossing_rate": 0.09647,
+            "spectral_centroid": 1992.26,
+            "spectral_bandwidth": 2141.745,
+            "spectral_rolloff": 4572.545,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -579,13 +787,14 @@
     },
     {
         "id": "visual_0016",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 3.2,
         "frame": "frame_00016.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -607,6 +816,18 @@
             "real_probability": 0.672918,
             "fake_probability": 0.327082
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 3.2,
+            "end": 3.4,
+            "rms_energy": 0.007064,
+            "zero_crossing_rate": 0.108398,
+            "spectral_centroid": 2069.026,
+            "spectral_bandwidth": 2151.748,
+            "spectral_rolloff": 4745.536,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -619,13 +840,14 @@
     },
     {
         "id": "visual_0017",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 3.4,
         "frame": "frame_00017.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -647,6 +869,18 @@
             "real_probability": 0.665456,
             "fake_probability": 0.334544
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 3.4,
+            "end": 3.6,
+            "rms_energy": 0.006696,
+            "zero_crossing_rate": 0.077009,
+            "spectral_centroid": 1766.875,
+            "spectral_bandwidth": 2057.695,
+            "spectral_rolloff": 4245.536,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -659,13 +893,14 @@
     },
     {
         "id": "visual_0018",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 3.6,
         "frame": "frame_00018.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -687,6 +922,18 @@
             "real_probability": 0.650184,
             "fake_probability": 0.349816
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 3.6,
+            "end": 3.8,
+            "rms_energy": 0.003706,
+            "zero_crossing_rate": 0.094657,
+            "spectral_centroid": 1940.279,
+            "spectral_bandwidth": 2053.962,
+            "spectral_rolloff": 4417.411,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -699,13 +946,14 @@
     },
     {
         "id": "visual_0019",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 3.8,
         "frame": "frame_00019.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -727,6 +975,18 @@
             "real_probability": 0.678561,
             "fake_probability": 0.321439
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 3.8,
+            "end": 4.0,
+            "rms_energy": 0.006117,
+            "zero_crossing_rate": 0.075335,
+            "spectral_centroid": 1660.634,
+            "spectral_bandwidth": 2019.239,
+            "spectral_rolloff": 4046.875,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -739,13 +999,14 @@
     },
     {
         "id": "visual_0020",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 4.0,
         "frame": "frame_00020.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -767,6 +1028,18 @@
             "real_probability": 0.684791,
             "fake_probability": 0.315209
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 4.0,
+            "end": 4.2,
+            "rms_energy": 0.006091,
+            "zero_crossing_rate": 0.071568,
+            "spectral_centroid": 1623.524,
+            "spectral_bandwidth": 1959.934,
+            "spectral_rolloff": 3822.545,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -779,13 +1052,14 @@
     },
     {
         "id": "visual_0021",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 4.2,
         "frame": "frame_00021.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -807,6 +1081,18 @@
             "real_probability": 0.700709,
             "fake_probability": 0.299291
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 4.2,
+            "end": 4.4,
+            "rms_energy": 0.003124,
+            "zero_crossing_rate": 0.060338,
+            "spectral_centroid": 1645.389,
+            "spectral_bandwidth": 2111.674,
+            "spectral_rolloff": 4254.464,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -819,13 +1105,14 @@
     },
     {
         "id": "visual_0022",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 4.4,
         "frame": "frame_00022.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -847,6 +1134,18 @@
             "real_probability": 0.713651,
             "fake_probability": 0.286349
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 4.4,
+            "end": 4.6,
+            "rms_energy": 0.144734,
+            "zero_crossing_rate": 0.066685,
+            "spectral_centroid": 1325.412,
+            "spectral_bandwidth": 1675.587,
+            "spectral_rolloff": 3022.321,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -859,13 +1158,14 @@
     },
     {
         "id": "visual_0023",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 4.6,
         "frame": "frame_00023.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -887,6 +1187,18 @@
             "real_probability": 0.680129,
             "fake_probability": 0.319871
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 4.6,
+            "end": 4.8,
+            "rms_energy": 0.224551,
+            "zero_crossing_rate": 0.152553,
+            "spectral_centroid": 2346.339,
+            "spectral_bandwidth": 1584.897,
+            "spectral_rolloff": 4051.339,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -899,13 +1211,14 @@
     },
     {
         "id": "visual_0024",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 4.8,
         "frame": "frame_00024.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -927,6 +1240,18 @@
             "real_probability": 0.671857,
             "fake_probability": 0.328143
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 4.8,
+            "end": 5.0,
+            "rms_energy": 0.074477,
+            "zero_crossing_rate": 0.414551,
+            "spectral_centroid": 4189.058,
+            "spectral_bandwidth": 1769.867,
+            "spectral_rolloff": 6055.804,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -939,13 +1264,14 @@
     },
     {
         "id": "visual_0025",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 5.0,
         "frame": "frame_00025.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -967,6 +1293,18 @@
             "real_probability": 0.664308,
             "fake_probability": 0.335692
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 5.0,
+            "end": 5.2,
+            "rms_energy": 0.003142,
+            "zero_crossing_rate": 0.121861,
+            "spectral_centroid": 2081.123,
+            "spectral_bandwidth": 2007.272,
+            "spectral_rolloff": 4477.679,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -979,13 +1317,14 @@
     },
     {
         "id": "visual_0026",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 5.2,
         "frame": "frame_00026.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -1007,6 +1346,18 @@
             "real_probability": 0.692429,
             "fake_probability": 0.307571
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 5.2,
+            "end": 5.4,
+            "rms_energy": 0.00267,
+            "zero_crossing_rate": 0.050642,
+            "spectral_centroid": 1582.731,
+            "spectral_bandwidth": 2057.483,
+            "spectral_rolloff": 4190.848,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -1019,13 +1370,14 @@
     },
     {
         "id": "visual_0027",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 5.4,
         "frame": "frame_00027.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -1047,6 +1399,18 @@
             "real_probability": 0.634122,
             "fake_probability": 0.365878
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 5.4,
+            "end": 5.6,
+            "rms_energy": 0.154783,
+            "zero_crossing_rate": 0.073661,
+            "spectral_centroid": 1372.213,
+            "spectral_bandwidth": 1348.245,
+            "spectral_rolloff": 3022.321,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -1059,13 +1423,14 @@
     },
     {
         "id": "visual_0028",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 5.6,
         "frame": "frame_00028.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -1087,6 +1452,18 @@
             "real_probability": 0.691152,
             "fake_probability": 0.308848
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 5.6,
+            "end": 5.8,
+            "rms_energy": 0.11432,
+            "zero_crossing_rate": 0.148368,
+            "spectral_centroid": 1767.422,
+            "spectral_bandwidth": 1640.432,
+            "spectral_rolloff": 3589.286,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -1099,13 +1476,14 @@
     },
     {
         "id": "visual_0029",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 5.8,
         "frame": "frame_00029.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -1127,6 +1505,18 @@
             "real_probability": 0.698108,
             "fake_probability": 0.301892
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 5.8,
+            "end": 6.0,
+            "rms_energy": 0.105668,
+            "zero_crossing_rate": 0.054269,
+            "spectral_centroid": 1076.582,
+            "spectral_bandwidth": 1244.967,
+            "spectral_rolloff": 2010.045,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -1139,13 +1529,14 @@
     },
     {
         "id": "visual_0030",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 6.0,
         "frame": "frame_00030.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -1167,6 +1558,18 @@
             "real_probability": 0.686549,
             "fake_probability": 0.313451
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 6.0,
+            "end": 6.2,
+            "rms_energy": 0.081553,
+            "zero_crossing_rate": 0.050363,
+            "spectral_centroid": 1000.006,
+            "spectral_bandwidth": 1250.059,
+            "spectral_rolloff": 1532.366,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -1179,13 +1582,14 @@
     },
     {
         "id": "visual_0031",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 6.2,
         "frame": "frame_00031.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -1207,6 +1611,18 @@
             "real_probability": 0.692905,
             "fake_probability": 0.307095
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 6.2,
+            "end": 6.4,
+            "rms_energy": 0.005142,
+            "zero_crossing_rate": 0.050921,
+            "spectral_centroid": 1321.655,
+            "spectral_bandwidth": 1786.221,
+            "spectral_rolloff": 3104.911,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -1219,13 +1635,14 @@
     },
     {
         "id": "visual_0032",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 6.4,
         "frame": "frame_00032.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -1247,6 +1664,18 @@
             "real_probability": 0.666931,
             "fake_probability": 0.333069
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 6.4,
+            "end": 6.6,
+            "rms_energy": 0.002086,
+            "zero_crossing_rate": 0.046945,
+            "spectral_centroid": 1483.608,
+            "spectral_bandwidth": 2060.676,
+            "spectral_rolloff": 3997.768,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -1259,13 +1688,14 @@
     },
     {
         "id": "visual_0033",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 6.6,
         "frame": "frame_00033.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -1287,6 +1717,18 @@
             "real_probability": 0.673633,
             "fake_probability": 0.326367
         },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 6.6,
+            "end": 6.8,
+            "rms_energy": 0.002205,
+            "zero_crossing_rate": 0.062988,
+            "spectral_centroid": 1984.095,
+            "spectral_bandwidth": 2152.043,
+            "spectral_rolloff": 4592.634,
+            "source": "librosa_acoustic_analysis"
+        },
         "aligned_speech": [
             {
                 "id": "speech_0000",
@@ -1299,13 +1741,14 @@
     },
     {
         "id": "visual_0034",
-        "type": "visual",
+        "type": "multimodal_visual",
         "timestamp": 6.8,
         "frame": "frame_00034.jpg",
         "source": [
             "mediapipe_face_detection",
             "normalized_landmark_analysis",
-            "vit_deepfake_detector"
+            "vit_deepfake_detector",
+            "librosa_acoustic_analysis"
         ],
         "face_count": 1,
         "faces": [
@@ -1326,6 +1769,18 @@
             "predicted_label": "real",
             "real_probability": 0.678292,
             "fake_probability": 0.321708
+        },
+        "audio": {
+            "available": true,
+            "status": "Audio signal available.",
+            "start": 6.8,
+            "end": 6.997,
+            "rms_energy": 0.002094,
+            "zero_crossing_rate": 0.068359,
+            "spectral_centroid": 1815.019,
+            "spectral_bandwidth": 2198.613,
+            "spectral_rolloff": 4639.509,
+            "source": "librosa_acoustic_analysis"
         },
         "aligned_speech": [
             {

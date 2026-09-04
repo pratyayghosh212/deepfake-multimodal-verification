@@ -47,7 +47,7 @@ def save_json(data, output_path):
 
 
 # =========================================================
-# Basic helper
+# Helper
 # =========================================================
 
 def clamp(
@@ -56,183 +56,471 @@ def clamp(
     maximum=1.0
 ):
     """
-    Restrict a value to the range [0, 1].
+    Restrict a value to [0, 1].
     """
 
     return max(
         minimum,
-        min(value, maximum)
+        min(float(value), maximum)
     )
 
 
 # =========================================================
-# Temporal anomaly score
+# Temporal anomaly normalization
 # =========================================================
 
 def normalize_deformation(value):
     """
     Convert landmark deformation into a
-    normalized temporal anomaly score.
+    supporting anomaly score.
 
-    The landmark analyzer produces deformation
-    values rather than probabilities.
+    IMPORTANT:
 
-    Therefore this function simply maps the
-    deformation into the range [0, 1].
+    This is NOT a deepfake probability.
 
-    Example:
+    Facial landmark movement can occur because
+    of natural head movement, expression changes,
+    camera motion, or tracking instability.
 
-        0.01 -> small anomaly
-        0.10 -> moderate anomaly
-        0.20+ -> high anomaly
+    Therefore this is used only as supporting
+    evidence.
     """
+
+    if value is None:
+        return 0.0
+
+    value = float(value)
+
+    # Conservative threshold.
+    #
+    # A deformation around 0.20 is treated as
+    # high temporal irregularity.
 
     threshold = 0.20
 
-    score = (
-        value /
-        threshold
-    )
+    score = value / threshold
 
-    return clamp(
-        score
-    )
+    return clamp(score)
 
 
 # =========================================================
-# Audio anomaly score
+# Audio signal
 # =========================================================
 
-def get_audio_anomaly_score(
-    audio_item
-):
+def get_audio_signal(audio_item):
     """
-    Calculate a simple heuristic audio
-    anomaly score.
+    Extract audio information.
 
-    Current audio analysis provides:
+    IMPORTANT:
 
-        RMS
-        ZCR
-        spectral centroid
+    RMS, ZCR, and spectral centroid are acoustic
+    features, NOT deepfake probabilities.
 
-    These are NOT deepfake probabilities.
-
-    They are only supporting audio signals.
+    Therefore ordinary acoustic properties are
+    preserved as evidence but are NOT directly
+    converted into a fake probability.
     """
 
     if not audio_item:
 
-        return 0.0
+        return {
 
-    # -----------------------------------------------------
-    # Read RMS
-    # -----------------------------------------------------
+            "available": False,
 
-    rms = audio_item.get(
-        "rms",
-        0.0
-    )
+            "rms": 0.0,
 
-    # -----------------------------------------------------
-    # Read zero crossing rate
-    #
-    # Support both possible field names.
-    # -----------------------------------------------------
+            "zero_crossing_rate": 0.0,
 
-    zcr = audio_item.get(
-        "zero_crossing_rate",
-        audio_item.get(
-            "zcr",
+            "spectral_centroid": 0.0,
+
+            "spectral_bandwidth": 0.0,
+
+            "spectral_rolloff": 0.0,
+
+            "anomaly_score": None
+        }
+
+    features = audio_item.get(
+        "features",
+        {}
+    ) or {}
+
+    rms = float(
+        features.get(
+            "rms_energy",
             0.0
-        )
+        ) or 0.0
     )
 
-    # -----------------------------------------------------
-    # Read spectral centroid
-    #
-    # Support both possible field names.
-    # -----------------------------------------------------
-
-    centroid = audio_item.get(
-        "spectral_centroid",
-        audio_item.get(
-            "centroid",
+    zcr = float(
+        features.get(
+            "zero_crossing_rate",
             0.0
-        )
+        ) or 0.0
     )
 
-    # -----------------------------------------------------
-    # Normalize individual signals
-    # -----------------------------------------------------
-
-    rms_score = clamp(
-        rms / 0.10
+    centroid = float(
+        features.get(
+            "spectral_centroid",
+            0.0
+        ) or 0.0
     )
 
-    zcr_score = clamp(
-        zcr / 0.40
+    bandwidth = float(
+        features.get(
+            "spectral_bandwidth",
+            0.0
+        ) or 0.0
     )
 
-    centroid_score = clamp(
-        centroid / 4000.0
+    rolloff = float(
+        features.get(
+            "spectral_rolloff",
+            0.0
+        ) or 0.0
     )
 
-    # -----------------------------------------------------
-    # Weighted audio score
-    # -----------------------------------------------------
+    # Audio is considered measurable when RMS
+    # is above a very small threshold.
 
-    score = (
-        0.40 * rms_score +
-        0.30 * zcr_score +
-        0.30 * centroid_score
-    )
+    available = rms >= 0.0001
 
-    return clamp(
-        score
-    )
+    return {
+
+        "available": available,
+
+        "rms": round(
+            rms,
+            6
+        ),
+
+        "zero_crossing_rate": round(
+            zcr,
+            6
+        ),
+
+        "spectral_centroid": round(
+            centroid,
+            3
+        ),
+
+        "spectral_bandwidth": round(
+            bandwidth,
+            3
+        ),
+
+        "spectral_rolloff": round(
+            rolloff,
+            3
+        ),
+
+        # We do NOT invent a deepfake score
+        # from ordinary acoustic features.
+
+        "anomaly_score": None
+    }
 
 
 # =========================================================
-# Lip-sync score
+# Lip-sync validation
 # =========================================================
 
-def get_lipsync_score(
-    lipsync_data
+def get_lipsync_signal(
+    lipsync_item,
+    audio_available
 ):
     """
-    Convert synchronization ratio into
-    a synchronization anomaly score.
+    Validate lip-sync evidence.
 
-    High synchronization is good.
+    Lip-sync influences fusion only when:
 
-    Therefore:
+        1. Lip-sync data exists
+        2. Audio is available
+        3. Synchronization ratio is valid
 
-        anomaly = 1 - synchronization_ratio
+    Otherwise it is marked unavailable.
     """
 
-    synchronization_ratio = lipsync_data.get(
-        "synchronization_ratio",
-        0.0
+    if not lipsync_item:
+
+        return {
+
+            "available": False,
+
+            "synchronization_ratio": None,
+
+            "anomaly_score": None
+        }
+
+    if not audio_available:
+
+        return {
+
+            "available": False,
+
+            "synchronization_ratio": None,
+
+            "anomaly_score": None
+        }
+
+    synchronization_ratio = lipsync_item.get(
+        "synchronization_ratio"
     )
 
-    synchronization_ratio = clamp(
-        synchronization_ratio
-    )
+    if synchronization_ratio is None:
+
+        return {
+
+            "available": False,
+
+            "synchronization_ratio": None,
+
+            "anomaly_score": None
+        }
+
+    try:
+
+        synchronization_ratio = float(
+            synchronization_ratio
+        )
+
+    except (
+        ValueError,
+        TypeError
+    ):
+
+        return {
+
+            "available": False,
+
+            "synchronization_ratio": None,
+
+            "anomaly_score": None
+        }
+
+    # Reject invalid ratios.
+
+    if (
+        synchronization_ratio < 0.0
+        or synchronization_ratio > 1.0
+    ):
+
+        return {
+
+            "available": False,
+
+            "synchronization_ratio": None,
+
+            "anomaly_score": None
+        }
 
     anomaly_score = (
         1.0 -
         synchronization_ratio
     )
 
-    return round(
-        anomaly_score,
-        6
-    )
+    return {
+
+        "available": True,
+
+        "synchronization_ratio": round(
+            synchronization_ratio,
+            6
+        ),
+
+        "anomaly_score": round(
+            anomaly_score,
+            6
+        )
+    }
 
 
 # =========================================================
-# Frame-level multimodal fusion
+# Timestamp lookup
+# =========================================================
+
+def find_temporal_by_filename(
+    filename,
+    temporal_lookup
+):
+    """
+    Find temporal analysis using filename.
+    """
+
+    return temporal_lookup.get(
+        filename,
+        {}
+    )
+
+
+def find_audio_at_timestamp(
+    timestamp,
+    audio_data
+):
+    """
+    Find audio window containing timestamp.
+    """
+
+    for audio in audio_data:
+
+        start = float(
+            audio.get(
+                "start",
+                0.0
+            ) or 0.0
+        )
+
+        end = float(
+            audio.get(
+                "end",
+                0.0
+            ) or 0.0
+        )
+
+        if start <= timestamp < end:
+
+            return audio
+
+    return None
+
+
+def find_lipsync_by_timestamp(
+    timestamp,
+    lipsync_data
+):
+    """
+    Find lip-sync evidence corresponding
+    to a visual frame timestamp.
+    """
+
+    # -------------------------------------------------
+    # Handle dictionary-based JSON formats
+    # -------------------------------------------------
+
+    if isinstance(
+        lipsync_data,
+        dict
+    ):
+
+        for key in [
+
+            "results",
+
+            "frames",
+
+            "entries",
+
+            "analysis",
+
+            "lipsync",
+
+            "data"
+        ]:
+
+            if key in lipsync_data:
+
+                lipsync_data = lipsync_data[key]
+
+                break
+
+        else:
+
+            print(
+                "WARNING: Unsupported lip-sync "
+                "dictionary structure."
+            )
+
+            return None
+
+    # -------------------------------------------------
+    # Validate list
+    # -------------------------------------------------
+
+    if not isinstance(
+        lipsync_data,
+        list
+    ):
+
+        return None
+
+    # -------------------------------------------------
+    # Search entries
+    # -------------------------------------------------
+
+    for item in lipsync_data:
+
+        if not isinstance(
+            item,
+            dict
+        ):
+
+            continue
+
+        # -------------------------------------------------
+        # Exact timestamp
+        # -------------------------------------------------
+
+        item_timestamp = item.get(
+            "timestamp"
+        )
+
+        if item_timestamp is not None:
+
+            try:
+
+                if abs(
+                    float(item_timestamp)
+                    - float(timestamp)
+                ) < 0.11:
+
+                    return item
+
+            except (
+                ValueError,
+                TypeError
+            ):
+
+                continue
+
+        # -------------------------------------------------
+        # Time range
+        # -------------------------------------------------
+
+        start = item.get(
+            "start"
+        )
+
+        end = item.get(
+            "end"
+        )
+
+        if (
+            start is not None
+            and end is not None
+        ):
+
+            try:
+
+                if (
+                    float(start)
+                    <= float(timestamp)
+                    <= float(end)
+                ):
+
+                    return item
+
+            except (
+                ValueError,
+                TypeError
+            ):
+
+                continue
+
+    return None
+
+
+# =========================================================
+# Fusion
 # =========================================================
 
 def fuse_visual_evidence(
@@ -242,219 +530,306 @@ def fuse_visual_evidence(
     lipsync_data
 ):
     """
-    Combine visual, temporal, audio and
-    lip-sync signals for every frame.
+    Fuse multimodal evidence frame-by-frame.
 
-    Current signals:
+    Signals preserved:
 
-        1. ViT fake probability
-        2. Landmark temporal deformation
-        3. Audio anomaly
-        4. Lip-sync anomaly
+        1. Visual deepfake detector
+        2. Face detection information
+        3. Temporal landmark analysis
+        4. Audio acoustic features
+        5. Lip-sync evidence
+        6. Aligned speech / transcript
 
-    Returns frame-level fused evidence.
+    Fusion strategy:
+
+        Visual detector:
+            Primary learned signal
+
+        Temporal analysis:
+            Supporting heuristic signal
+
+        Lip-sync:
+            Used only when valid
+
+        Audio:
+            Used as contextual evidence only
+
+        Transcript:
+            Preserved for RAG retrieval but does
+            NOT directly affect fake probability.
     """
-
-    # =====================================================
-    # Temporal lookup
-    # =====================================================
-
-    temporal_lookup = {
-        item.get("filename"): item
-        for item in temporal_data
-    }
-
-    # =====================================================
-    # Audio lookup
-    #
-    # Audio analysis is performed in 0.2 second
-    # windows. We match the window midpoint
-    # with the visual frame timestamp.
-    # =====================================================
-
-    audio_lookup = {}
-
-    for item in audio_data:
-
-        start = item.get(
-            "start",
-            0.0
-        )
-
-        end = item.get(
-            "end",
-            start
-        )
-
-        midpoint = (
-            start +
-            end
-        ) / 2.0
-
-        audio_lookup[
-            round(
-                midpoint,
-                1
-            )
-        ] = item
-
-    # =====================================================
-    # Global lip-sync anomaly
-    # =====================================================
-
-    lipsync_anomaly = get_lipsync_score(
-        lipsync_data
-    )
-
-    # =====================================================
-    # Store results
-    # =====================================================
 
     fused_frames = []
 
-    # =====================================================
-    # Process every visual frame
-    # =====================================================
+    # -----------------------------------------------------
+    # Create temporal lookup
+    # -----------------------------------------------------
+
+    temporal_lookup = {
+
+        item.get("filename"): item
+
+        for item in temporal_data
+
+        if item.get("filename") is not None
+    }
+
+    # -----------------------------------------------------
+    # Process each visual frame
+    # -----------------------------------------------------
 
     for frame in visual_data:
 
-        # -------------------------------------------------
-        # Get frame information
-        # -------------------------------------------------
+        timestamp = float(
+            frame.get(
+                "timestamp",
+                0.0
+            ) or 0.0
+        )
 
         filename = frame.get(
             "frame",
+            "unknown"
+        )
+
+        # =================================================
+        # Preserve face detection information
+        # =================================================
+
+        face_count = int(
             frame.get(
-                "filename"
-            )
+                "face_count",
+                0
+            ) or 0
         )
 
-        timestamp = frame.get(
-            "timestamp",
-            0.0
-        )
+        faces = frame.get(
+            "faces",
+            []
+        ) or []
 
-        # -------------------------------------------------
-        # ViT deepfake signal
-        # -------------------------------------------------
+        # =================================================
+        # Preserve aligned speech / transcript
+        # =================================================
+
+        aligned_speech = frame.get(
+            "aligned_speech",
+            []
+        ) or []
+
+        # =================================================
+        # Visual detector
+        # =================================================
 
         deepfake_model = frame.get(
             "deepfake_model",
             {}
+        ) or {}
+
+        fake_probability = float(
+            deepfake_model.get(
+                "fake_probability",
+                0.0
+            ) or 0.0
         )
 
-        fake_probability = deepfake_model.get(
-            "fake_probability",
-            0.0
+        real_probability = float(
+            deepfake_model.get(
+                "real_probability",
+                0.0
+            ) or 0.0
+        )
+
+        predicted_label = deepfake_model.get(
+            "predicted_label",
+            "unknown"
         )
 
         fake_probability = clamp(
             fake_probability
         )
 
-        # -------------------------------------------------
-        # Temporal landmark signal
-        # -------------------------------------------------
+        real_probability = clamp(
+            real_probability
+        )
 
-        temporal = temporal_lookup.get(
-            filename,
+        # =================================================
+        # Temporal analysis
+        # =================================================
+
+        temporal_item = (
+            find_temporal_by_filename(
+                filename,
+                temporal_lookup
+            )
+        )
+
+        frame_temporal = frame.get(
+            "temporal",
             {}
+        ) or {}
+
+        mean_deformation = float(
+            temporal_item.get(
+                "mean_deformation",
+                frame_temporal.get(
+                    "mean_deformation",
+                    0.0
+                )
+            ) or 0.0
         )
 
-        mean_deformation = temporal.get(
-            "mean_deformation",
-            0.0
+        std_deformation = float(
+            temporal_item.get(
+                "std_deformation",
+                frame_temporal.get(
+                    "std_deformation",
+                    0.0
+                )
+            ) or 0.0
         )
 
-        temporal_score = (
+        max_deformation = float(
+            temporal_item.get(
+                "max_deformation",
+                frame_temporal.get(
+                    "max_deformation",
+                    0.0
+                )
+            ) or 0.0
+        )
+
+        temporal_anomaly = (
             normalize_deformation(
                 mean_deformation
             )
         )
 
-        # -------------------------------------------------
-        # Audio signal
-        # -------------------------------------------------
+        # =================================================
+        # Audio
+        # =================================================
 
-        audio_key = round(
-            timestamp,
-            1
+        audio_item = (
+            find_audio_at_timestamp(
+                timestamp,
+                audio_data
+            )
         )
 
-        audio_item = audio_lookup.get(
-            audio_key,
-            {}
-        )
-
-        audio_score = (
-            get_audio_anomaly_score(
+        audio_signal = (
+            get_audio_signal(
                 audio_item
             )
         )
 
-        # -------------------------------------------------
-        # Lip-sync signal
-        #
-        # Current lip-sync analyzer provides
-        # a global synchronization ratio.
-        #
-        # Therefore the same score is temporarily
-        # used for every frame.
-        # -------------------------------------------------
+        # =================================================
+        # Lip-sync
+        # =================================================
 
-        frame_lipsync_score = (
-            lipsync_anomaly
+        lipsync_item = (
+            find_lipsync_by_timestamp(
+                timestamp,
+                lipsync_data
+            )
+        )
+
+        lipsync_signal = (
+            get_lipsync_signal(
+
+                lipsync_item,
+
+                audio_signal[
+                    "available"
+                ]
+            )
         )
 
         # =================================================
-        # Multimodal fusion
-        # =================================================
-        #
-        # Current weights:
-        #
-        # ViT             = 50%
-        # Temporal        = 20%
-        # Audio           = 10%
-        # Lip-sync        = 20%
-        #
-        # These are heuristic weights.
-        # They are NOT learned weights.
+        # Weighted fusion
         # =================================================
 
-        fused_score = (
+        if lipsync_signal["available"]:
 
-            0.50 *
-            fake_probability
+            fusion_score = (
 
-            +
+                0.70 *
+                fake_probability
 
-            0.20 *
-            temporal_score
+                +
 
-            +
+                0.15 *
+                temporal_anomaly
 
-            0.10 *
-            audio_score
+                +
 
-            +
+                0.15 *
+                lipsync_signal[
+                    "anomaly_score"
+                ]
+            )
 
-            0.20 *
-            frame_lipsync_score
-        )
+            active_modalities = [
 
-        fused_score = clamp(
-            fused_score
+                "visual",
+
+                "temporal",
+
+                "lip_sync"
+            ]
+
+        else:
+
+            # Renormalized weights when
+            # lip-sync is unavailable.
+
+            fusion_score = (
+
+                0.80 *
+                fake_probability
+
+                +
+
+                0.20 *
+                temporal_anomaly
+            )
+
+            active_modalities = [
+
+                "visual",
+
+                "temporal"
+            ]
+
+        # Audio and speech are preserved as
+        # contextual evidence but do not directly
+        # influence the suspicion score.
+
+        if audio_signal["available"]:
+
+            active_modalities.append(
+                "audio"
+            )
+
+        if aligned_speech:
+
+            active_modalities.append(
+                "speech"
+            )
+
+        fusion_score = clamp(
+            fusion_score
         )
 
         # =================================================
         # Evidence level
         # =================================================
 
-        if fused_score >= 0.70:
+        if fusion_score >= 0.70:
 
             evidence_level = "high"
 
-        elif fused_score >= 0.40:
+        elif fusion_score >= 0.45:
 
             evidence_level = "medium"
 
@@ -468,85 +843,108 @@ def fuse_visual_evidence(
 
         fused_frame = {
 
-            "timestamp": timestamp,
+            "timestamp": round(
+                timestamp,
+                3
+            ),
 
             "frame": filename,
 
-            "signals": {
+            # ---------------------------------------------
+            # Face detection evidence
+            # ---------------------------------------------
 
-                # -----------------------------------------
-                # Visual model
-                # -----------------------------------------
+            "face_detection": {
 
-                "visual": {
+                "face_count": face_count,
 
-                    "fake_probability": round(
-                        fake_probability,
-                        6
-                    )
-                },
-
-                # -----------------------------------------
-                # Temporal landmarks
-                # -----------------------------------------
-
-                "temporal": {
-
-                    "mean_deformation": round(
-                        mean_deformation,
-                        6
-                    ),
-
-                    "anomaly_score": round(
-                        temporal_score,
-                        6
-                    )
-                },
-
-                # -----------------------------------------
-                # Audio
-                # -----------------------------------------
-
-                "audio": {
-
-                    "anomaly_score": round(
-                        audio_score,
-                        6
-                    )
-                },
-
-                # -----------------------------------------
-                # Lip-sync
-                # -----------------------------------------
-
-                "lip_sync": {
-
-                    "synchronization_ratio": round(
-                        1.0 -
-                        frame_lipsync_score,
-                        6
-                    ),
-
-                    "anomaly_score": round(
-                        frame_lipsync_score,
-                        6
-                    )
-                }
+                "faces": faces
             },
 
             # ---------------------------------------------
-            # Final frame-level fusion
+            # Speech / transcript evidence
+            # ---------------------------------------------
+
+            "speech": {
+
+                "segments": aligned_speech
+            },
+
+            # ---------------------------------------------
+            # Multimodal signals
+            # ---------------------------------------------
+
+            "signals": {
+
+                "visual": {
+
+                    "predicted_label":
+                        predicted_label,
+
+                    "real_probability":
+                        round(
+                            real_probability,
+                            6
+                        ),
+
+                    "fake_probability":
+                        round(
+                            fake_probability,
+                            6
+                        )
+                },
+
+                "temporal": {
+
+                    "mean_deformation":
+                        round(
+                            mean_deformation,
+                            6
+                        ),
+
+                    "std_deformation":
+                        round(
+                            std_deformation,
+                            6
+                        ),
+
+                    "max_deformation":
+                        round(
+                            max_deformation,
+                            6
+                        ),
+
+                    "anomaly_score":
+                        round(
+                            temporal_anomaly,
+                            6
+                        )
+                },
+
+                "audio":
+                    audio_signal,
+
+                "lip_sync":
+                    lipsync_signal
+            },
+
+            # ---------------------------------------------
+            # Fusion result
             # ---------------------------------------------
 
             "fusion": {
 
-                "score": round(
-                    fused_score,
-                    6
-                ),
+                "score":
+                    round(
+                        fusion_score,
+                        6
+                    ),
 
                 "evidence_level":
-                    evidence_level
+                    evidence_level,
+
+                "active_modalities":
+                    active_modalities
             }
         }
 
@@ -565,17 +963,16 @@ def calculate_overall_score(
     fused_frames
 ):
     """
-    Calculate the overall video-level
+    Calculate overall video-level
     suspicion score.
 
-    We combine:
+    We use:
 
-        70% average frame score
-        30% maximum frame score
+        80% average frame score
+        20% maximum frame score
 
-    This means one unusual frame does not
-    automatically classify the entire video
-    as fake.
+    This prevents one unusual frame from
+    dominating the entire video classification.
     """
 
     if not fused_frames:
@@ -592,10 +989,6 @@ def calculate_overall_score(
                 "insufficient_evidence"
         }
 
-    # -----------------------------------------------------
-    # Extract frame scores
-    # -----------------------------------------------------
-
     scores = [
 
         frame["fusion"]["score"]
@@ -603,35 +996,24 @@ def calculate_overall_score(
         for frame in fused_frames
     ]
 
-    # -----------------------------------------------------
-    # Average score
-    # -----------------------------------------------------
-
     average_score = (
-        sum(scores) /
+        sum(scores)
+        /
         len(scores)
     )
-
-    # -----------------------------------------------------
-    # Maximum score
-    # -----------------------------------------------------
 
     maximum_score = max(
         scores
     )
 
-    # -----------------------------------------------------
-    # Overall score
-    # -----------------------------------------------------
-
     overall_score = (
 
-        0.70 *
+        0.80 *
         average_score
 
         +
 
-        0.30 *
+        0.20 *
         maximum_score
     )
 
@@ -640,45 +1022,43 @@ def calculate_overall_score(
     )
 
     # -----------------------------------------------------
-    # Overall assessment
+    # Assessment
     # -----------------------------------------------------
 
     if overall_score >= 0.70:
 
-        assessment = (
-            "high_suspicion"
-        )
+        assessment = "high_suspicion"
 
-    elif overall_score >= 0.40:
+    elif overall_score >= 0.45:
 
-        assessment = (
-            "moderate_suspicion"
-        )
+        assessment = "moderate_suspicion"
 
     else:
 
-        assessment = (
-            "low_suspicion"
-        )
+        assessment = "low_suspicion"
 
     return {
 
-        "overall_score": round(
-            overall_score,
-            6
-        ),
+        "overall_score":
+            round(
+                overall_score,
+                6
+            ),
 
-        "maximum_frame_score": round(
-            maximum_score,
-            6
-        ),
+        "maximum_frame_score":
+            round(
+                maximum_score,
+                6
+            ),
 
-        "average_frame_score": round(
-            average_score,
-            6
-        ),
+        "average_frame_score":
+            round(
+                average_score,
+                6
+            ),
 
-        "assessment": assessment
+        "assessment":
+            assessment
     }
 
 
@@ -722,21 +1102,32 @@ if __name__ == "__main__":
     )
 
     # =====================================================
-    # Load visual evidence
+    # Start
+    # =====================================================
+
+    print()
+
+    print("=" * 60)
+    print("MULTIMODAL EVIDENCE FUSION")
+    print("=" * 60)
+
+    print()
+
+    # =====================================================
+    # Load unified evidence
     # =====================================================
 
     print(
-        "Loading visual evidence..."
+        "Loading unified evidence..."
     )
 
     all_evidence = load_json(
         evidence_path
     )
 
-    # evidence.json contains both
-    # speech and visual evidence.
-    #
-    # We only want visual frames here.
+    # -----------------------------------------------------
+    # Extract multimodal visual frames
+    # -----------------------------------------------------
 
     visual_data = [
 
@@ -744,12 +1135,35 @@ if __name__ == "__main__":
 
         for item in all_evidence
 
-        if item.get("type") == "visual"
+        if item.get("type")
+        == "multimodal_visual"
     ]
 
+    # -----------------------------------------------------
+    # Count speech evidence
+    # -----------------------------------------------------
+
+    speech_evidence_count = len(
+
+        [
+
+            item
+
+            for item in all_evidence
+
+            if item.get("type")
+            == "speech"
+        ]
+    )
+
     print(
-        f"Visual frames: "
+        f"Multimodal visual frames: "
         f"{len(visual_data)}"
+    )
+
+    print(
+        f"Speech evidence segments: "
+        f"{speech_evidence_count}"
     )
 
     # =====================================================
@@ -794,15 +1208,72 @@ if __name__ == "__main__":
         "Loading lip-sync analysis..."
     )
 
-    lipsync_data = load_json(
+    lipsync_file = Path(
         lipsync_path
     )
 
+    if lipsync_file.exists():
+
+        lipsync_data = load_json(
+            lipsync_path
+        )
+
+        if isinstance(
+            lipsync_data,
+            list
+        ):
+
+            lipsync_count = len(
+                lipsync_data
+            )
+
+        elif isinstance(
+            lipsync_data,
+            dict
+        ):
+
+            lipsync_count = "dictionary format"
+
+        else:
+
+            lipsync_count = 0
+
+        print(
+            f"Lip-sync entries: "
+            f"{lipsync_count}"
+        )
+
+    else:
+
+        print(
+            "Lip-sync file not found."
+        )
+
+        print(
+            "Continuing without lip-sync evidence."
+        )
+
+        lipsync_data = []
+
     # =====================================================
-    # Fuse all signals
+    # Validate
+    # =====================================================
+
+    if not visual_data:
+
+        raise ValueError(
+
+            "No multimodal visual evidence found. "
+            "Check evidence.json and ensure the type "
+            "is 'multimodal_visual'."
+        )
+
+    # =====================================================
+    # Fuse
     # =====================================================
 
     print()
+
     print(
         "Fusing multimodal evidence..."
     )
@@ -819,11 +1290,66 @@ if __name__ == "__main__":
     )
 
     # =====================================================
-    # Calculate overall score
+    # Overall score
     # =====================================================
 
     overall = calculate_overall_score(
         fused_frames
+    )
+
+    # =====================================================
+    # Count preserved modalities
+    # =====================================================
+
+    frames_with_speech = sum(
+
+        1
+
+        for frame in fused_frames
+
+        if frame.get(
+            "speech",
+            {}
+        ).get(
+            "segments",
+            []
+        )
+    )
+
+    frames_with_audio = sum(
+
+        1
+
+        for frame in fused_frames
+
+        if frame.get(
+            "signals",
+            {}
+        ).get(
+            "audio",
+            {}
+        ).get(
+            "available",
+            False
+        )
+    )
+
+    frames_with_lipsync = sum(
+
+        1
+
+        for frame in fused_frames
+
+        if frame.get(
+            "signals",
+            {}
+        ).get(
+            "lip_sync",
+            {}
+        ).get(
+            "available",
+            False
+        )
     )
 
     # =====================================================
@@ -838,11 +1364,29 @@ if __name__ == "__main__":
                 "Multimodal Deepfake Evidence Fusion",
 
             "version":
-                "1.0"
+                "2.1"
         },
 
         "overall":
             overall,
+
+        "metadata": {
+
+            "frames_fused":
+                len(fused_frames),
+
+            "speech_evidence_segments":
+                speech_evidence_count,
+
+            "frames_with_aligned_speech":
+                frames_with_speech,
+
+            "frames_with_audio":
+                frames_with_audio,
+
+            "frames_with_lipsync":
+                frames_with_lipsync
+        },
 
         "frames":
             fused_frames
@@ -858,13 +1402,12 @@ if __name__ == "__main__":
     )
 
     # =====================================================
-    # Print summary
+    # Summary
     # =====================================================
 
     print()
-    print(
-        "--------------------------------"
-    )
+
+    print("-" * 60)
 
     print(
         "Multimodal fusion completed."
@@ -874,6 +1417,23 @@ if __name__ == "__main__":
         f"Frames fused: "
         f"{len(fused_frames)}"
     )
+
+    print(
+        f"Frames with aligned speech: "
+        f"{frames_with_speech}"
+    )
+
+    print(
+        f"Frames with usable audio: "
+        f"{frames_with_audio}"
+    )
+
+    print(
+        f"Frames with lip-sync evidence: "
+        f"{frames_with_lipsync}"
+    )
+
+    print()
 
     print(
         f"Overall score: "
@@ -895,11 +1455,11 @@ if __name__ == "__main__":
         f"{overall['average_frame_score']:.4f}"
     )
 
+    print()
+
     print(
         f"Saved to: "
         f"{output_path}"
     )
 
-    print(
-        "--------------------------------"
-    )
+    print("-" * 60)

@@ -1,3 +1,4 @@
+import json
 import subprocess
 from pathlib import Path
 
@@ -6,68 +7,65 @@ import numpy as np
 
 
 # =========================================================
+# Configuration
+# =========================================================
+
+VIDEO_PATH = "data/videos/test.mp4"
+AUDIO_PATH = "data/audio/audio.wav"
+ANALYSIS_PATH = "data/audio/audio_analysis.json"
+
+SAMPLE_RATE = 16000
+WINDOW_DURATION = 0.2
+
+
+# =========================================================
 # Audio extraction
 # =========================================================
 
-def extract_audio(
-    video_path: str,
-    output_path: str
-):
+def extract_audio(video_path: str, output_path: str):
     """
     Extract the audio stream from a video
     and save it as a WAV file.
-
-    Returns basic information about
-    the extracted audio.
     """
 
     video_path = Path(video_path)
     output_path = Path(output_path)
 
-    # -----------------------------------------------------
-    # Validate input
-    # -----------------------------------------------------
-
+    # Validate input video
     if not video_path.exists():
         raise FileNotFoundError(
             f"Video not found: {video_path}"
         )
 
-    # -----------------------------------------------------
     # Create output directory
-    # -----------------------------------------------------
-
     output_path.parent.mkdir(
         parents=True,
         exist_ok=True
     )
 
-    # -----------------------------------------------------
     # FFmpeg command
-    # -----------------------------------------------------
-
     command = [
         "ffmpeg",
         "-y",
         "-i",
         str(video_path),
 
-        # Mono
+        # Convert to mono
         "-ac",
         "1",
 
-        # 16 kHz
+        # Sample rate
         "-ar",
-        "16000",
+        str(SAMPLE_RATE),
 
-        # 16-bit PCM WAV
+        # PCM WAV
         "-acodec",
         "pcm_s16le",
 
         str(output_path)
     ]
 
-    print("Extracting audio...")
+    print("\nExtracting audio...")
 
     result = subprocess.run(
         command,
@@ -76,24 +74,18 @@ def extract_audio(
         text=True
     )
 
-    # -----------------------------------------------------
-    # Check FFmpeg
-    # -----------------------------------------------------
-
+    # Check FFmpeg result
     if result.returncode != 0:
         raise RuntimeError(
-            "FFmpeg failed while extracting audio:\n"
+            "FFmpeg failed while extracting audio:\n\n"
             f"{result.stderr}"
         )
 
-    # -----------------------------------------------------
     # Verify output
-    # -----------------------------------------------------
-
     if not output_path.exists():
         raise RuntimeError(
-            "FFmpeg completed but the audio file "
-            "was not created."
+            "Audio extraction completed, "
+            "but the output file was not created."
         )
 
     print(
@@ -102,10 +94,34 @@ def extract_audio(
 
     return {
         "audio_path": str(output_path),
-        "sample_rate": 16000,
+        "sample_rate": SAMPLE_RATE,
         "channels": 1,
         "format": "wav",
         "codec": "pcm_s16le"
+    }
+
+
+# =========================================================
+# Check whether audio contains meaningful signal
+# =========================================================
+
+def check_audio_signal(audio):
+    """
+    Check whether the extracted audio contains
+    meaningful non-silent signal.
+    """
+
+    max_amplitude = float(
+        np.max(np.abs(audio))
+    )
+
+    rms_amplitude = float(
+        np.sqrt(np.mean(audio ** 2))
+    )
+
+    return {
+        "max_amplitude": max_amplitude,
+        "rms_amplitude": rms_amplitude
     }
 
 
@@ -116,41 +132,33 @@ def extract_audio(
 def analyze_audio(
     audio_path: str,
     output_path: str,
-    sample_rate: int = 16000,
-    window_duration: float = 0.2
+    sample_rate: int = SAMPLE_RATE,
+    window_duration: float = WINDOW_DURATION
 ):
     """
     Extract timestamped acoustic features.
 
-    Each analysis window contains:
+    Features:
+        - RMS energy
+        - Zero-crossing rate
+        - Spectral centroid
+        - Spectral bandwidth
+        - Spectral rolloff
 
-        RMS energy
-        Zero-crossing rate
-        Spectral centroid
-        Spectral bandwidth
-        Spectral rolloff
-
-    The default window duration is 0.2 seconds,
-    matching the 5 FPS video analysis.
+    Also detects silent audio windows.
     """
 
     audio_path = Path(audio_path)
     output_path = Path(output_path)
 
-    # -----------------------------------------------------
-    # Validate audio
-    # -----------------------------------------------------
-
+    # Validate audio file
     if not audio_path.exists():
         raise FileNotFoundError(
             f"Audio file not found: {audio_path}"
         )
 
-    # -----------------------------------------------------
     # Load audio
-    # -----------------------------------------------------
-
-    print("Loading audio...")
+    print("\nLoading audio...")
 
     audio, actual_sr = librosa.load(
         str(audio_path),
@@ -179,7 +187,32 @@ def analyze_audio(
     )
 
     # -----------------------------------------------------
-    # Convert time window to samples
+    # Check overall audio signal
+    # -----------------------------------------------------
+
+    signal_info = check_audio_signal(audio)
+
+    print("\nAudio signal check:")
+
+    print(
+        f"Maximum amplitude: "
+        f"{signal_info['max_amplitude']:.6f}"
+    )
+
+    print(
+        f"Overall RMS: "
+        f"{signal_info['rms_amplitude']:.6f}"
+    )
+
+    if signal_info["max_amplitude"] < 0.0001:
+
+        print(
+            "\nWARNING: The extracted audio appears "
+            "to be silent or nearly silent."
+        )
+
+    # -----------------------------------------------------
+    # Window setup
     # -----------------------------------------------------
 
     window_samples = int(
@@ -188,12 +221,14 @@ def analyze_audio(
 
     results = []
 
-    # -----------------------------------------------------
-    # Analyze each window
-    # -----------------------------------------------------
-
     start_sample = 0
     window_index = 0
+
+    print("\nAnalyzing audio windows...\n")
+
+    # -----------------------------------------------------
+    # Analyze windows
+    # -----------------------------------------------------
 
     while start_sample < len(audio):
 
@@ -218,23 +253,33 @@ def analyze_audio(
         )
 
         # -------------------------------------------------
-        # RMS energy
+        # Check silence
         # -------------------------------------------------
 
-        rms = librosa.feature.rms(
-            y=chunk
+        chunk_max = float(
+            np.max(np.abs(chunk))
         )
+
+        chunk_rms = float(
+            np.sqrt(np.mean(chunk ** 2))
+        )
+
+        is_silent = chunk_max < 0.0001
+
+        # -------------------------------------------------
+        # RMS Energy
+        # -------------------------------------------------
 
         rms_value = float(
-            np.mean(rms)
+            np.sqrt(np.mean(chunk ** 2))
         )
 
         # -------------------------------------------------
-        # Zero crossing rate
+        # Zero Crossing Rate
         # -------------------------------------------------
 
         zcr = librosa.feature.zero_crossing_rate(
-            chunk
+            y=chunk
         )
 
         zcr_value = float(
@@ -245,9 +290,27 @@ def analyze_audio(
         # Spectral features
         # -------------------------------------------------
 
+        # Very short windows can cause FFT issues,
+        # so choose a valid FFT size.
+
+        n_fft = min(
+            2048,
+            len(chunk)
+        )
+
+        if n_fft < 256:
+            n_fft = len(chunk)
+
+        hop_length = max(
+            1,
+            n_fft // 4
+        )
+
         centroid = librosa.feature.spectral_centroid(
             y=chunk,
-            sr=actual_sr
+            sr=actual_sr,
+            n_fft=n_fft,
+            hop_length=hop_length
         )
 
         centroid_value = float(
@@ -256,7 +319,9 @@ def analyze_audio(
 
         bandwidth = librosa.feature.spectral_bandwidth(
             y=chunk,
-            sr=actual_sr
+            sr=actual_sr,
+            n_fft=n_fft,
+            hop_length=hop_length
         )
 
         bandwidth_value = float(
@@ -266,7 +331,9 @@ def analyze_audio(
         rolloff = librosa.feature.spectral_rolloff(
             y=chunk,
             sr=actual_sr,
-            roll_percent=0.85
+            roll_percent=0.85,
+            n_fft=n_fft,
+            hop_length=hop_length
         )
 
         rolloff_value = float(
@@ -274,14 +341,11 @@ def analyze_audio(
         )
 
         # -------------------------------------------------
-        # Store evidence
+        # Store result
         # -------------------------------------------------
 
         result = {
-            "id": (
-                f"audio_"
-                f"{window_index:04d}"
-            ),
+            "id": f"audio_{window_index:04d}",
 
             "type": "audio",
 
@@ -302,7 +366,10 @@ def analyze_audio(
 
             "source": "librosa_acoustic_analysis",
 
+            "audio_available": not is_silent,
+
             "features": {
+
                 "rms_energy": round(
                     rms_value,
                     6
@@ -332,18 +399,26 @@ def analyze_audio(
 
         results.append(result)
 
+        # -------------------------------------------------
+        # Display result
+        # -------------------------------------------------
+
+        status = (
+            "SILENT"
+            if is_silent
+            else "AUDIO"
+        )
+
         print(
             f"[{start_time:.2f}s - "
             f"{end_time:.2f}s] "
+            f"{status} | "
             f"RMS={rms_value:.4f} | "
             f"ZCR={zcr_value:.4f} | "
-            f"Centroid={centroid_value:.1f}"
+            f"Centroid={centroid_value:.1f} Hz"
         )
 
-        # -------------------------------------------------
         # Move to next window
-        # -------------------------------------------------
-
         start_sample = end_sample
         window_index += 1
 
@@ -362,8 +437,6 @@ def analyze_audio(
         encoding="utf-8"
     ) as file:
 
-        import json
-
         json.dump(
             results,
             file,
@@ -371,6 +444,7 @@ def analyze_audio(
         )
 
     print()
+
     print(
         f"Created {len(results)} "
         f"audio analysis windows."
@@ -385,35 +459,41 @@ def analyze_audio(
 
 
 # =========================================================
-# Entry point
+# Main
 # =========================================================
 
 if __name__ == "__main__":
+
+    print("=" * 60)
+    print("AUDIO ANALYSIS PIPELINE")
+    print("=" * 60)
 
     # -----------------------------------------------------
     # Step 1: Extract audio
     # -----------------------------------------------------
 
     audio_info = extract_audio(
-        video_path="data/videos/test.mp4",
-        output_path="data/audio/audio.wav"
+        video_path=VIDEO_PATH,
+        output_path=AUDIO_PATH
     )
 
-    print()
-    print("Audio information:")
-    print(audio_info)
+    print("\nAudio information:")
+
+    for key, value in audio_info.items():
+
+        print(
+            f"{key}: {value}"
+        )
 
     # -----------------------------------------------------
     # Step 2: Analyze audio
     # -----------------------------------------------------
 
     analyze_audio(
-        audio_path="data/audio/audio.wav",
-        output_path=(
-            "data/audio/"
-            "audio_analysis.json"
-        ),
-
-        # Match our 5 FPS visual timeline
-        window_duration=0.2
+        audio_path=AUDIO_PATH,
+        output_path=ANALYSIS_PATH,
+        sample_rate=SAMPLE_RATE,
+        window_duration=WINDOW_DURATION
     )
+
+    print("\nAudio analysis completed successfully.")
